@@ -6,10 +6,7 @@ const Hero = () => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      window.scrollTo({
-        top: aboutSection.offsetTop - 80,
-        behavior: 'smooth'
-      });
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
   };
 
@@ -31,15 +28,15 @@ const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight opacity-0 animate-slide-up">
-            Creating digital <br className="hidden sm:block" />
+            Sheryar <br className="hidden sm:block" />
             <span className="text-primary relative">
-              experiences
+              Khan
               <span className="absolute -bottom-2 left-0 right-0 h-1 bg-primary/30"></span>
             </span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl opacity-0 animate-slide-up-delay-1">
-            I design and build exceptional digital experiences that are intuitive, functional, and visually appealing.
+            Full-Stack Developer from Peshawar, Pakistan specializing in MERN stack development with expertise in SEO optimization.
           </p>
           
           <div className="flex flex-wrap gap-4 opacity-0 animate-slide-up-delay-2">

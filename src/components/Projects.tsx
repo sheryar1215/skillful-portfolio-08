@@ -6,63 +6,43 @@ import { cn } from '@/lib/utils';
 const projects = [
   {
     id: 1,
+    title: "Patient Management System",
+    description: "A comprehensive patient management system for healthcare providers to manage patient records, appointments, and medical histories effectively.",
+    image: "https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Redux"],
+    demoLink: "https://patient-management.example.com",
+    repoLink: "https://github.com/sheryar1215/patient-management",
+    category: "fullstack"
+  },
+  {
+    id: 2,
+    title: "Point of Sales System",
+    description: "A modern point of sales system for retail businesses with inventory management, sales tracking, and reporting features.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    demoLink: "https://pos-system.example.com",
+    repoLink: "https://github.com/sheryar1215/pos-system",
+    category: "fullstack"
+  },
+  {
+    id: 3,
     title: "E-Commerce Platform",
     description: "A full-featured e-commerce platform with product listings, shopping cart, user authentication, and payment processing.",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe API"],
     demoLink: "https://e-commerce-demo.example.com",
-    repoLink: "https://github.com/yourusername/e-commerce",
+    repoLink: "https://github.com/sheryar1215/e-commerce",
     category: "fullstack"
   },
   {
-    id: 2,
+    id: 4,
     title: "Personal Finance Dashboard",
     description: "Interactive dashboard for personal finance tracking with data visualization, budget planning, and expense categorization.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     technologies: ["React", "TypeScript", "Chart.js", "Firebase", "Tailwind CSS"],
     demoLink: "https://finance-dashboard.example.com",
-    repoLink: "https://github.com/yourusername/finance-dashboard",
+    repoLink: "https://github.com/sheryar1215/finance-dashboard",
     category: "frontend"
-  },
-  {
-    id: 3,
-    title: "Content Management System",
-    description: "Custom CMS built for content creators with markdown support, media management, and customizable templates.",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["Next.js", "PostgreSQL", "GraphQL", "AWS S3"],
-    demoLink: "https://cms-example.example.com",
-    repoLink: "https://github.com/yourusername/custom-cms",
-    category: "fullstack"
-  },
-  {
-    id: 4,
-    title: "Task Management API",
-    description: "RESTful API for task management applications with user authentication, task CRUD operations, and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["Node.js", "Express", "MongoDB", "JWT", "Jest"],
-    demoLink: "https://task-api-docs.example.com",
-    repoLink: "https://github.com/yourusername/task-api",
-    category: "backend"
-  },
-  {
-    id: 5,
-    title: "Weather Forecast App",
-    description: "Responsive weather application with 7-day forecasts, location detection, and interactive weather maps.",
-    image: "https://images.unsplash.com/photo-1532178910-7815d6919875?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "OpenWeather API", "Leaflet.js", "Styled Components"],
-    demoLink: "https://weather-app.example.com",
-    repoLink: "https://github.com/yourusername/weather-app",
-    category: "frontend"
-  },
-  {
-    id: 6,
-    title: "Real-time Chat Application",
-    description: "Chat platform with real-time messaging, user presence indicators, and file sharing capabilities.",
-    image: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Socket.io", "Express", "MongoDB", "Redis"],
-    demoLink: "https://chat-app.example.com",
-    repoLink: "https://github.com/yourusername/chat-app",
-    category: "fullstack"
   }
 ];
 

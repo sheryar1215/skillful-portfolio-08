@@ -4,36 +4,15 @@ import { Briefcase } from 'lucide-react';
 
 const experiences = [
   {
-    company: "Tech Innovations Inc.",
-    position: "Full Stack Developer",
-    duration: "Jan 2023 - Present",
-    description: "Lead developer for multiple client projects, implementing responsive front-end interfaces with React and building scalable APIs using Node.js and Express. Collaborate with UX designers to create intuitive user experiences and mentor junior developers.",
+    company: "Software House in Peshawar",
+    position: "Full Stack Developer Intern",
+    duration: "December 2024 - March 2025",
+    description: "Worked as a full-stack developer focusing on MERN stack technologies to build scalable and responsive web applications. Implemented SEO strategies for React applications and learned workflow automation with n8n and AI integration with Lovable AI.",
     achievements: [
-      "Reduced page load time by 40% through code optimization and implementing lazy loading",
-      "Developed a reusable component library that decreased development time by 30%",
-      "Implemented CI/CD pipelines that improved deployment efficiency by 50%"
-    ]
-  },
-  {
-    company: "Digital Solutions LLC",
-    position: "Frontend Developer Intern",
-    duration: "May 2022 - Dec 2022",
-    description: "Worked on developing and maintaining the company's flagship web application using React and TypeScript. Collaborated with the design team to implement UI components and ensure responsive design across devices.",
-    achievements: [
-      "Developed interactive data visualization dashboards using Chart.js",
-      "Optimized application performance by implementing state management with Redux",
-      "Created automated test suites achieving 80% code coverage"
-    ]
-  },
-  {
-    company: "Freelance Developer",
-    position: "Web Developer",
-    duration: "2020 - 2022",
-    description: "Designed and developed custom websites and web applications for small businesses and startups. Managed entire project lifecycle from requirements gathering to deployment and maintenance.",
-    achievements: [
-      "Successfully delivered over 15 projects for clients across various industries",
-      "Implemented SEO best practices resulting in average 35% increase in organic traffic",
-      "Designed and developed e-commerce solutions with payment gateway integration"
+      "Built scalable and responsive web applications using the MERN stack",
+      "Implemented SEO strategies for React applications, improving website rankings",
+      "Gained experience with n8n for workflow automation and Lovable AI for AI-driven applications",
+      "Worked with Supabase, APIs, and real-time features for enhanced application capabilities"
     ]
   }
 ];

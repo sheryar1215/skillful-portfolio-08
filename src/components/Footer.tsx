@@ -18,12 +18,12 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
             <div className="text-2xl font-display font-bold mb-2">
-              <span className="sr-only">Portfolio</span>
-              <span className="bg-foreground text-background px-2 py-1 rounded mr-1">PS</span>
+              <span className="sr-only">Sheryar Khan</span>
+              <span className="bg-foreground text-background px-2 py-1 rounded mr-1">SK</span>
             </div>
             
             <p className="text-muted-foreground text-sm mt-2">
-              &copy; {currentYear} Portfolio. All rights reserved.
+              &copy; {currentYear} Sheryar Khan. All rights reserved.
             </p>
           </div>
           
@@ -40,7 +40,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-border/50">
           <p className="text-center text-sm text-muted-foreground">
-            Designed and built with care by a passionate developer.
+            Designed and built by Sheryar Khan - Full Stack Developer based in Peshawar, Pakistan.
           </p>
         </div>
       </div>

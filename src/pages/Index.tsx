@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   useEffect(() => {
     // Implement any initialization logic or analytics here
-    document.title = "Portfolio - Computer Science Graduate & Full-Stack Developer";
+    document.title = "Sheryar Khan - Computer Science Graduate & Full-Stack Developer";
   }, []);
 
   return (

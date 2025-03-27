@@ -3,11 +3,11 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 const skills = [
-  { category: "Programming Languages", items: ["JavaScript", "TypeScript", "Python", "Java", "C++", "HTML", "CSS"] },
-  { category: "Frontend", items: ["React", "Vue.js", "Next.js", "Tailwind CSS", "Material UI", "Redux"] },
-  { category: "Backend", items: ["Node.js", "Express", "Django", "Flask", "RESTful APIs", "GraphQL"] },
-  { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"] },
-  { category: "DevOps & Tools", items: ["Git", "Docker", "AWS", "Vercel", "Netlify", "CI/CD", "VS Code", "Figma"] }
+  { category: "Programming Languages", items: ["JavaScript", "TypeScript", "Python", "Java", "HTML", "CSS"] },
+  { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Material UI", "Redux"] },
+  { category: "Backend", items: ["Node.js", "Express", "MongoDB", "RESTful APIs"] },
+  { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL", "Supabase"] },
+  { category: "DevOps & Tools", items: ["Git", "GitHub", "Vercel", "Netlify", "VS Code", "n8n", "Lovable AI"] }
 ];
 
 const About = () => {
@@ -27,15 +27,15 @@ const About = () => {
             
             <div className="space-y-6 opacity-0 animate-slide-up-delay-2">
               <p className="text-foreground/90">
-                Hello! I'm a dedicated full-stack developer with a Computer Science degree and a passion for creating clean, functional, and user-friendly web applications. My journey in technology began with a curiosity about how digital experiences are built, which led me to pursue formal education and continuous self-learning in this ever-evolving field.
+                Hello! I'm Sheryar Khan, a dedicated full-stack developer with a Bachelor's degree in Computer Science from the University of Peshawar. I specialize in building clean, functional, and user-friendly web applications with the MERN stack (MongoDB, Express, React, Node.js).
               </p>
               
               <p className="text-foreground/90">
-                I approach each project with a focus on writing clean, maintainable code while ensuring exceptional user experiences. I enjoy the challenge of solving complex problems and continuously expanding my technical expertise through hands-on project work and staying current with industry trends.
+                My development approach focuses on creating scalable and responsive web applications with seamless user experiences. I'm particularly experienced in SEO strategies, especially React SEO, helping websites improve their rankings and performance. I've also worked with n8n for workflow automation and Lovable AI for creating AI-driven applications.
               </p>
               
               <p className="text-foreground/90">
-                When I'm not coding, you might find me exploring new technologies, contributing to open-source projects, or expanding my knowledge through online courses and technical books.
+                Based in Peshawar, Khyber Pakhtunkhwa, Pakistan, I'm passionate about using technology to solve real-world problems and deliver exceptional digital experiences to users.
               </p>
             </div>
           </div>

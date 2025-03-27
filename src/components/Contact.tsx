@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, Phone } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
@@ -8,25 +8,31 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:your.email@example.com",
+    url: "mailto:1215sheryarkhan@gmail.com",
     color: "hover:text-[#EA4335]"
+  },
+  {
+    name: "Phone",
+    icon: Phone,
+    url: "tel:+923161290066",
+    color: "hover:text-[#4CAF50]"
   },
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com/yourusername",
+    url: "https://github.com/sheryar1215",
     color: "hover:text-[#181717]"
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com/in/yourusername",
+    url: "https://www.linkedin.com/in/sheryar-khan-2b34832ab",
     color: "hover:text-[#0A66C2]"
   },
   {
     name: "Twitter",
     icon: Twitter,
-    url: "https://twitter.com/yourusername",
+    url: "https://x.com/SherKha40731606",
     color: "hover:text-[#1DA1F2]"
   }
 ];
@@ -177,7 +183,7 @@ const Contact = () => {
             <div className="mt-10 p-6 rounded-lg border border-border bg-secondary/30">
               <h4 className="font-medium text-lg mb-2">Response Time</h4>
               <p className="text-muted-foreground text-sm">
-                I typically respond to all messages within 24-48 hours. For urgent inquiries, email is the best way to reach me.
+                I typically respond to all messages within 24-48 hours. For urgent inquiries, email or phone is the best way to reach me.
               </p>
             </div>
           </div>
