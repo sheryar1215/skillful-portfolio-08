@@ -11,7 +11,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     technologies: ["HTML", "Css","Bootstrap", "Javascript", "Mysql", "PHP"],
     demoLink: "https://patient-management.example.com",
-    repoLink: "https://github.com/sheryar1215/patient-management",
+    repoLink: "https://github.com/sheryar1215/pms_project",
     category: "fullstack"
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     technologies: ["HTML", "Css","Bootstrap", "Javascript", "Mysql", "PHP"],
     demoLink: "https://pos-system.example.com",
-    repoLink: "https://github.com/sheryar1215/pos-system",
+    repoLink: "https://github.com/sheryar1215/pfms",
     category: "fullstack"
   },
   {
@@ -41,7 +41,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     technologies: ["Loveable Ai", "Webhook", "Supabase","github"],
     demoLink: "https://finance-dashboard.example.com",
-    repoLink: "https://github.com/sheryar1215/finance-dashboard",
+    repoLink: "https://github.com/sheryar1215/prototype-nexus",
     category: "Full Stack"
   }
 ];
