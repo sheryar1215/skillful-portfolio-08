@@ -17,38 +17,38 @@ const education = [
   }
 ];
 
-// const certifications = [
-//   {
-//     title: "Full Stack Web Development",
-//     issuer: "Udemy",
-//     date: "December 2022",
-//     credentialId: "UC-1234567890"
-//   },
-//   {
-//     title: "React - The Complete Guide",
-//     issuer: "Coursera",
-//     date: "August 2022",
-//     credentialId: "CERT-987654321"
-//   },
-//   {
-//     title: "Advanced JavaScript Concepts",
-//     issuer: "Frontend Masters",
-//     date: "May 2022",
-//     credentialId: "FM-567890123"
-//   },
-//   {
-//     title: "Responsive Web Design",
-//     issuer: "freeCodeCamp",
-//     date: "February 2022",
-//     credentialId: "FCC-321098765"
-//   },
-//   {
-//     title: "AWS Certified Developer Associate",
-//     issuer: "Amazon Web Services",
-//     date: "January 2023",
-//     credentialId: "AWS-456789012"
-//   }
-// ];
+const certifications = [
+  {
+    title: "Full Stack Web Development",
+    issuer: "Udemy",
+    date: "December 2022",
+    credentialId: "UC-1234567890"
+  },
+  {
+    title: "React - The Complete Guide",
+    issuer: "Coursera",
+    date: "August 2022",
+    credentialId: "CERT-987654321"
+  },
+  {
+    title: "Advanced JavaScript Concepts",
+    issuer: "Frontend Masters",
+    date: "May 2022",
+    credentialId: "FM-567890123"
+  },
+  {
+    title: "Responsive Web Design",
+    issuer: "freeCodeCamp",
+    date: "February 2022",
+    credentialId: "FCC-321098765"
+  },
+  {
+    title: "AWS Certified Developer Associate",
+    issuer: "Amazon Web Services",
+    date: "January 2023",
+    credentialId: "AWS-456789012"
+  }
+];
 
 const Education = () => {
   return (
