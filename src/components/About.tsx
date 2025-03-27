@@ -5,9 +5,9 @@ import { cn } from '@/lib/utils';
 const skills = [
   { category: "Programming Languages", items: ["JavaScript","C++","PHP","Matlab", "Java", "HTML", "CSS"] },
   { category: "Frontend", items: ["React", "Bootstrap", "Tailwind CSS", "HTML", "CSS"] },
-  { category: "Backend", items: ["Node.js", ,"PHP","Laravel", "Express", "MongoDB", "RESTful APIs"] },
+  { category: "Backend", items: ["Node.js", ,"PHP","Laravel", "Express","RESTful APIs"] },
   { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL", "Supabase"] },
-  { category: "DevOps & Tools", items: ["Git", "GitHub", "Figma", "SublimeTEXT", "VS Code", "n8n", "Lovable AI"] }
+  { category: "DevOps & Tools", items: ["Git", "GitHub", "Figma", "Sublime Text3", "VS Code", "n8n", "Lovable AI"] }
 ];
 
 const About = () => {
