@@ -43,6 +43,37 @@ const projects = [
     demoLink: "https://finance-dashboard.example.com",
     repoLink: "https://github.com/sheryar1215/prototype-nexus",
     category: "Full Stack"
+  },
+  // Adding new frontend projects
+  {
+    id: 5,
+    title: "Educational Institute Website",
+    description: "A modern and responsive website for an educational institute featuring course information, faculty profiles, and student resources.",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoLink: "https://education-institute.example.com",
+    repoLink: "https://github.com/sheryar1215/education-website",
+    category: "frontend"
+  },
+  {
+    id: 6,
+    title: "Todo List Application",
+    description: "An interactive todo list application that allows users to add, complete, edit, and delete tasks with local storage persistence.",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["HTML", "CSS", "JavaScript", "jQuery"],
+    demoLink: "https://todo-app.example.com",
+    repoLink: "https://github.com/sheryar1215/todo-list",
+    category: "frontend"
+  },
+  {
+    id: 7,
+    title: "E-commerce Website Design",
+    description: "A sleek and responsive e-commerce website design with product showcase, shopping cart functionality, and user-friendly navigation.",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoLink: "https://ecommerce-design.example.com",
+    repoLink: "https://github.com/sheryar1215/ecommerce-design",
+    category: "frontend"
   }
 ];
 
