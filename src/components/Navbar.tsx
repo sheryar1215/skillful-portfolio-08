@@ -13,8 +13,10 @@ const Navbar = () => {
 
       sections.forEach((section) => {
         const sectionId = section.getAttribute('id') || '';
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        // Type cast section to HTMLElement to access offsetTop and offsetHeight
+        const htmlSection = section as HTMLElement;
+        const sectionTop = htmlSection.offsetTop;
+        const sectionHeight = htmlSection.offsetHeight;
 
         if (
           scrollPosition >= sectionTop &&
@@ -39,7 +41,7 @@ const Navbar = () => {
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 80,
+        top: (element as HTMLElement).offsetTop - 80,
         behavior: 'smooth'
       });
     }
