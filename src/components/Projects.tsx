@@ -9,7 +9,7 @@ const projects = [
     title: "Patient Management System",
     description: "A comprehensive patient management system for healthcare providers to manage patient records, appointments, and medical histories effectively.",
     image: "https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Redux"],
+    technologies: ["HTML", "Css","Bootstrap", "Javascript", "Mysql", "PHP"],
     demoLink: "https://patient-management.example.com",
     repoLink: "https://github.com/sheryar1215/patient-management",
     category: "fullstack"
@@ -19,7 +19,7 @@ const projects = [
     title: "Point of Sales System",
     description: "A modern point of sales system for retail businesses with inventory management, sales tracking, and reporting features.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    technologies: ["HTML", "Css","Bootstrap", "Javascript", "Mysql", "PHP"],
     demoLink: "https://pos-system.example.com",
     repoLink: "https://github.com/sheryar1215/pos-system",
     category: "fullstack"
@@ -29,20 +29,20 @@ const projects = [
     title: "E-Commerce Platform",
     description: "A full-featured e-commerce platform with product listings, shopping cart, user authentication, and payment processing.",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe API"],
+    technologies: ["React", "Node.js", "Express", "MongoDB", "REST API"],
     demoLink: "https://e-commerce-demo.example.com",
     repoLink: "https://github.com/sheryar1215/e-commerce",
     category: "fullstack"
   },
   {
     id: 4,
-    title: "Personal Finance Dashboard",
-    description: "Interactive dashboard for personal finance tracking with data visualization, budget planning, and expense categorization.",
+    title: "Prototype Real Time Coaching",
+    description: ".",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "TypeScript", "Chart.js", "Firebase", "Tailwind CSS"],
+    technologies: ["Loveable Ai", "Webhook", "Supabase","github"],
     demoLink: "https://finance-dashboard.example.com",
     repoLink: "https://github.com/sheryar1215/finance-dashboard",
-    category: "frontend"
+    category: "Full Stack"
   }
 ];
 

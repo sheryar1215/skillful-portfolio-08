@@ -27,7 +27,7 @@ const About = () => {
             
             <div className="space-y-6 opacity-0 animate-slide-up-delay-2">
               <p className="text-foreground/90">
-                Hello! I'm Sheryar Khan, a dedicated full-stack developer with a Bachelor's degree in Computer Science from the University of Peshawar. I specialize in building clean, functional, and user-friendly web applications with the MERN stack (MongoDB, Express, React, Node.js).
+                Hello! I'm Sheryar Khan, a dedicated full-stack developer with a Bachelor's degree in Computer Science from the University of Peshawar. I specialize in building clean, functional, and user-friendly web applications with the PHP, LARAVEL, Loveable AI  and  MERN stack (MongoDB, Express, React, Node.js).
               </p>
               
               <p className="text-foreground/90">
