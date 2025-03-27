@@ -97,7 +97,7 @@ const Education = () => {
             </div>
           </div>
           
-          {/* <div className="opacity-0 animate-slide-up-delay-3">
+          <div className="opacity-0 animate-slide-up-delay-3">
             <div className="flex items-center gap-3 mb-8">
               <Award className="h-6 w-6 text-foreground" />
               <h3 className="text-2xl font-display font-bold">Certifications</h3>
@@ -122,7 +122,7 @@ const Education = () => {
                   </p>
                 </div>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
