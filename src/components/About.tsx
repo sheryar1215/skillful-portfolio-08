@@ -3,11 +3,11 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 const skills = [
-  { category: "Programming Languages", items: ["JavaScript", "TypeScript", "Python", "Java", "HTML", "CSS"] },
-  { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Material UI", "Redux"] },
-  { category: "Backend", items: ["Node.js", "Express", "MongoDB", "RESTful APIs"] },
+  { category: "Programming Languages", items: ["JavaScript","C++","PHP","Matlab", "Java", "HTML", "CSS"] },
+  { category: "Frontend", items: ["React", "Bootstrap", "Tailwind CSS", "HTML", "CSS"] },
+  { category: "Backend", items: ["Node.js", ,"PHP","Laravel", "Express", "MongoDB", "RESTful APIs"] },
   { category: "Database", items: ["MongoDB", "PostgreSQL", "MySQL", "Supabase"] },
-  { category: "DevOps & Tools", items: ["Git", "GitHub", "Vercel", "Netlify", "VS Code", "n8n", "Lovable AI"] }
+  { category: "DevOps & Tools", items: ["Git", "GitHub", "Figma", "SublimeTEXT", "VS Code", "n8n", "Lovable AI"] }
 ];
 
 const About = () => {

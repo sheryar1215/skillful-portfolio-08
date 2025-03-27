@@ -36,7 +36,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl opacity-0 animate-slide-up-delay-1">
-            Full-Stack Developer from Peshawar, Pakistan specializing in MERN stack development with expertise in SEO optimization.
+            Full-Stack Developer from Peshawar, Pakistan specializing in PHP ,LARAVEL and MERN stack development with expertise in SEO optimization.
           </p>
           
           <div className="flex flex-wrap gap-4 opacity-0 animate-slide-up-delay-2">
