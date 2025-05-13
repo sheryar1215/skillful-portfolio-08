@@ -95,6 +95,14 @@ export default {
 					'0%': { transform: 'translateY(-20px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' }
 				},
+				slideLeft: {
+					'0%': { transform: 'translateX(20px)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
+				},
+				slideRight: {
+					'0%': { transform: 'translateX(-20px)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
+				},
 				pulse: {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.5' }
@@ -107,6 +115,16 @@ export default {
 					'0%': { backgroundPosition: '-500px 0' },
 					'100%': { backgroundPosition: '500px 0' }
 				},
+				bounce: {
+					'0%, 100%': { 
+						transform: 'translateY(0)',
+						animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)'
+					},
+					'50%': {
+						transform: 'translateY(-15px)',
+						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+					}
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -117,9 +135,12 @@ export default {
 				'slide-up-delay-2': 'slideUp 0.6s ease-out 0.2s forwards',
 				'slide-up-delay-3': 'slideUp 0.6s ease-out 0.3s forwards',
 				'slide-down': 'slideDown 0.6s ease-out forwards',
+				'slide-left': 'slideLeft 0.6s ease-out forwards',
+				'slide-right': 'slideRight 0.6s ease-out forwards',
 				'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				'float': 'float 6s ease-in-out infinite',
 				'shimmer': 'shimmer 2s linear infinite',
+				'bounce-slow': 'bounce 3s infinite',
 			},
 			backdropBlur: {
 				xs: '2px',

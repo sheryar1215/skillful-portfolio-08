@@ -77,12 +77,15 @@ const Contact = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-          <div className="opacity-0 animate-slide-up-delay-2">
-            <h3 className="text-2xl font-display font-bold mb-6">Get in Touch</h3>
+          <div className="opacity-0 animate-slide-up-delay-2 group hover:-translate-y-1 transition-transform duration-300">
+            <h3 className="text-2xl font-display font-bold mb-6 relative">
+              Get in Touch
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-32 transition-all duration-500"></span>
+            </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">
+              <div className="group">
+                <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
                   Your Name
                 </label>
                 <input
@@ -92,13 +95,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="contact-input"
+                  className="contact-input transform transition-transform focus:-translate-y-1 focus:shadow-md"
                   placeholder="John Doe"
                 />
               </div>
               
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">
+              <div className="group">
+                <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
                   Email Address
                 </label>
                 <input
@@ -108,13 +111,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="contact-input"
+                  className="contact-input transform transition-transform focus:-translate-y-1 focus:shadow-md"
                   placeholder="john@example.com"
                 />
               </div>
               
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">
+              <div className="group">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
                   Message
                 </label>
                 <textarea
@@ -124,7 +127,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="contact-input resize-none"
+                  className="contact-input resize-none transform transition-transform focus:-translate-y-1 focus:shadow-md"
                   placeholder="I'd like to discuss a project..."
                 />
               </div>
@@ -133,7 +136,7 @@ const Contact = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "button-primary w-full flex items-center justify-center",
+                  "button-primary w-full flex items-center justify-center hover:-translate-y-1 transition-transform",
                   isSubmitting && "opacity-70 cursor-not-allowed"
                 )}
               >
@@ -152,8 +155,11 @@ const Contact = () => {
             </form>
           </div>
           
-          <div className="opacity-0 animate-slide-up-delay-3">
-            <h3 className="text-2xl font-display font-bold mb-6">Connect With Me</h3>
+          <div className="opacity-0 animate-slide-up-delay-3 group hover:-translate-y-1 transition-transform duration-300">
+            <h3 className="text-2xl font-display font-bold mb-6 relative">
+              Connect With Me
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-44 transition-all duration-500"></span>
+            </h3>
             
             <p className="text-muted-foreground mb-8">
               Feel free to reach out through any of the platforms below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
@@ -169,7 +175,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "flex items-center gap-3 p-4 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors",
+                      "flex items-center gap-3 p-4 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors transform hover:-translate-y-1 transition-transform shadow-sm hover:shadow-md",
                       link.color
                     )}
                   >
@@ -180,7 +186,7 @@ const Contact = () => {
               })}
             </div>
             
-            <div className="mt-10 p-6 rounded-lg border border-border bg-secondary/30">
+            <div className="mt-10 p-6 rounded-lg border border-border bg-secondary/30 transform hover:-translate-y-1 transition-transform duration-300 hover:shadow-md">
               <h4 className="font-medium text-lg mb-2">Response Time</h4>
               <p className="text-muted-foreground text-sm">
                 I typically respond to all messages within 24-48 hours. For urgent inquiries, email or phone is the best way to reach me.

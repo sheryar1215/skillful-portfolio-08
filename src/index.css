@@ -106,7 +106,7 @@
 
 @layer components {
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm dark:bg-black/30 dark:border-white/10;
   }
   
   .glass-dark {
@@ -126,7 +126,9 @@
   }
   
   .nav-link {
-    @apply relative px-3 py-2 text-foreground/80 hover:text-foreground transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-0 after:bg-foreground after:transition-all hover:after:w-full;
+    @apply relative px-3 py-2 text-foreground/80 hover:text-foreground transition-colors duration-200 
+    after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-0 after:bg-foreground 
+    after:transition-all hover:after:w-full;
   }
   
   .nav-link.active {
@@ -134,23 +136,26 @@
   }
   
   .skill-badge {
-    @apply px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground transition-all hover:bg-secondary/80;
+    @apply px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground transition-all 
+    hover:bg-secondary/80 hover:-translate-y-1 hover:shadow-md;
   }
   
   .button-primary {
-    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:translate-y-[-2px] active:translate-y-0 active:shadow-md;
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all 
+    hover:shadow-lg hover:translate-y-[-2px] active:translate-y-0 active:shadow-md;
   }
   
   .button-secondary {
-    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium transition-all hover:bg-secondary/80;
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium transition-all 
+    hover:bg-secondary/80 hover:-translate-y-1 hover:shadow-md;
   }
 
   .project-card {
-    @apply glass rounded-xl overflow-hidden transition-all hover:shadow-xl hover:translate-y-[-5px];
+    @apply glass rounded-xl overflow-hidden transition-all hover:shadow-xl hover:translate-y-[-5px] dark:glass-dark;
   }
   
   .timeline-item {
-    @apply relative pl-8 pb-10 border-l border-muted last:border-0 last:pb-0;
+    @apply relative pl-8 pb-10 border-l border-muted last:border-0 last:pb-0 hover:-translate-y-1 transition-transform;
   }
   
   .timeline-dot {
@@ -158,8 +163,44 @@
   }
   
   .contact-input {
-    @apply w-full p-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/20;
+    @apply w-full p-3 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground/70 
+    focus:outline-none focus:ring-2 focus:ring-primary/20 dark:bg-secondary/80;
   }
+  
+  .animate-in {
+    @apply opacity-100 translate-y-0 transition-all duration-500 ease-out;
+  }
+  
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-500 ease-out;
+  }
+}
+
+/* Enhanced keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  from { mask-position: -150%; }
+  to { mask-position: 250%; }
 }
 
 html.lenis {
@@ -180,4 +221,35 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* Add hover effect animations */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-glow {
+  @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/20;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.pulse-animation {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.float-animation {
+  animation: float 6s infinite ease-in-out;
+}
+
+.spin-animation {
+  animation: spin-slow 15s infinite linear;
+}
+
+.gradient-animation {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }

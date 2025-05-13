@@ -1,10 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
+import { Switch } from '@/components/ui/switch';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +51,10 @@ const Navbar = () => {
     }
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <header 
       className={cn(
@@ -55,9 +63,9 @@ const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <a href="#home" className="text-xl font-display font-bold">
+        <a href="#home" className="text-xl font-display font-bold group">
           <span className="sr-only">Portfolio</span>
-          <span className="bg-foreground text-background px-2 py-1 rounded mr-1">PS</span>
+          <span className="bg-foreground text-background px-2 py-1 rounded mr-1 group-hover:scale-105 transition-transform">PS</span>
         </a>
         
         <nav className="hidden md:flex items-center space-x-2">
@@ -73,9 +81,31 @@ const Navbar = () => {
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </button>
           ))}
+          
+          <div className="ml-4 flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
+              <Sun className="h-[14px] w-[14px] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-[14px] w-[14px] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </div>
+            <Switch
+              checked={theme === 'dark'}
+              onCheckedChange={toggleTheme}
+              className="data-[state=checked]:bg-primary"
+            />
+          </div>
         </nav>
         
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-4">
+          <div className="flex items-center space-x-1 mr-2">
+            <Sun className="h-[14px] w-[14px] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-[14px] w-[14px] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <Switch
+              checked={theme === 'dark'}
+              onCheckedChange={toggleTheme}
+              className="data-[state=checked]:bg-primary"
+            />
+          </div>
           <MobileMenu activeSection={activeSection} scrollToSection={scrollToSection} />
         </div>
       </div>
@@ -141,7 +171,7 @@ const MobileMenu = ({
                 key={section}
                 onClick={() => handleNavClick(section)}
                 className={cn(
-                  "py-3 px-4 rounded-lg transition-colors",
+                  "py-3 px-4 rounded-lg transition-all hover:-translate-y-1",
                   activeSection === section 
                     ? "bg-primary/10 text-foreground font-medium" 
                     : "text-foreground/80 hover:bg-secondary"
