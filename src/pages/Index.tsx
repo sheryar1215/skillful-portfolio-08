@@ -27,8 +27,20 @@ const Index = () => {
       observer.observe(el);
     });
 
+    // Apply animation to mobile menu items
+    const applyMobileAnimations = () => {
+      const menuItems = document.querySelectorAll('.animate-in');
+      menuItems.forEach((item, index) => {
+        (item as HTMLElement).style.transitionDelay = `${index * 0.05}s`;
+      });
+    };
+    
+    applyMobileAnimations();
+    window.addEventListener('resize', applyMobileAnimations);
+
     return () => {
       observer.disconnect();
+      window.removeEventListener('resize', applyMobileAnimations);
     };
   }, []);
 

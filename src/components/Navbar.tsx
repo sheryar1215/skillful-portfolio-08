@@ -1,13 +1,16 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
 import { Switch } from '@/components/ui/switch';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,17 +98,13 @@ const Navbar = () => {
           </div>
         </nav>
         
-        <div className="md:hidden flex items-center space-x-4">
-          <div className="flex items-center space-x-1 mr-2">
-            <Sun className="h-[14px] w-[14px] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-[14px] w-[14px] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <Switch
-              checked={theme === 'dark'}
-              onCheckedChange={toggleTheme}
-              className="data-[state=checked]:bg-primary"
-            />
-          </div>
-          <MobileMenu activeSection={activeSection} scrollToSection={scrollToSection} />
+        <div className="md:hidden flex items-center">
+          <MobileMenu 
+            activeSection={activeSection} 
+            scrollToSection={scrollToSection} 
+            theme={theme}
+            toggleTheme={toggleTheme}
+          />
         </div>
       </div>
     </header>
@@ -114,10 +113,14 @@ const Navbar = () => {
 
 const MobileMenu = ({ 
   activeSection, 
-  scrollToSection 
+  scrollToSection,
+  theme,
+  toggleTheme
 }: { 
   activeSection: string; 
-  scrollToSection: (id: string) => void 
+  scrollToSection: (id: string) => void;
+  theme: string;
+  toggleTheme: () => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -130,32 +133,47 @@ const MobileMenu = ({
 
   return (
     <div>
-      <button 
-        onClick={toggleMenu}
-        className="p-2 text-foreground focus:outline-none"
-        aria-label="Toggle menu"
-      >
-        <div className="w-6 h-5 flex flex-col justify-between">
-          <span 
-            className={cn(
-              "w-full h-0.5 bg-current transition-transform duration-300",
-              isOpen && "translate-y-[8px] rotate-45"
-            )}
-          />
-          <span 
-            className={cn(
-              "w-full h-0.5 bg-current transition-opacity duration-300",
-              isOpen && "opacity-0"
-            )}
-          />
-          <span 
-            className={cn(
-              "w-full h-0.5 bg-current transition-transform duration-300",
-              isOpen && "translate-y-[-8px] -rotate-45"
-            )}
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1">
+            <Sun className="h-[14px] w-[14px] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-[14px] w-[14px] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <span className="sr-only">Toggle theme</span>
+          </div>
+          <Switch
+            checked={theme === 'dark'}
+            onCheckedChange={toggleTheme}
+            className="data-[state=checked]:bg-primary"
           />
         </div>
-      </button>
+        
+        <button 
+          onClick={toggleMenu}
+          className="p-2 text-foreground focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 h-5 flex flex-col justify-between">
+            <span 
+              className={cn(
+                "w-full h-0.5 bg-current transition-transform duration-300",
+                isOpen && "translate-y-[8px] rotate-45"
+              )}
+            />
+            <span 
+              className={cn(
+                "w-full h-0.5 bg-current transition-opacity duration-300",
+                isOpen && "opacity-0"
+              )}
+            />
+            <span 
+              className={cn(
+                "w-full h-0.5 bg-current transition-transform duration-300",
+                isOpen && "translate-y-[-8px] -rotate-45"
+              )}
+            />
+          </div>
+        </button>
+      </div>
       
       <div 
         className={cn(
@@ -170,7 +188,7 @@ const MobileMenu = ({
                 key={section}
                 onClick={() => handleNavClick(section)}
                 className={cn(
-                  "py-3 px-4 rounded-lg transition-all hover:-translate-y-1",
+                  "py-3 px-4 rounded-lg transition-all hover:scale-105 hover:-translate-y-1 hover:bg-secondary/80 animate-in",
                   activeSection === section 
                     ? "bg-primary/10 text-foreground font-medium" 
                     : "text-foreground/80 hover:bg-secondary"
