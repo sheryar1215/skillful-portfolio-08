@@ -27,11 +27,17 @@ const Index = () => {
       observer.observe(el);
     });
 
-    // Apply animation to mobile menu items
+    // Apply animation to mobile menu items with staggered delay
     const applyMobileAnimations = () => {
       const menuItems = document.querySelectorAll('.animate-in');
       menuItems.forEach((item, index) => {
         (item as HTMLElement).style.transitionDelay = `${index * 0.05}s`;
+      });
+      
+      // Add staggered animations to mobile buttons
+      const mobileNavButtons = document.querySelectorAll('nav button');
+      mobileNavButtons.forEach((button, index) => {
+        (button as HTMLElement).style.animationDelay = `${index * 0.1}s`;
       });
     };
     
