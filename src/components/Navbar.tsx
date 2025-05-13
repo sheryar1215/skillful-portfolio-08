@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Moon, Sun } from 'lucide-react';
@@ -65,7 +64,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <a href="#home" className="text-xl font-display font-bold group">
           <span className="sr-only">Portfolio</span>
-          <span className="bg-foreground text-background px-2 py-1 rounded mr-1 group-hover:scale-105 transition-transform">PS</span>
+          <span className="bg-foreground text-background px-2 py-1 rounded mr-1 group-hover:scale-105 transition-transform">SK</span>
         </a>
         
         <nav className="hidden md:flex items-center space-x-2">
