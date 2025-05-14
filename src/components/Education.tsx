@@ -15,6 +15,26 @@ const education = [
       "Final Year Project: Developed an AI-powered task management system",
       "Teaching Assistant for Web Development course (2021)"
     ]
+  },
+  {
+    degree: "FSc Pre-Engineering",
+    institution: "Edwards College Peshawar",
+    duration: "2017 - 2019",
+    description: "Completed pre-engineering coursework with focus on mathematics, physics, and chemistry.",
+    achievements: [
+      "Participated in college science exhibitions",
+      "Member of the college science society"
+    ]
+  },
+  {
+    degree: "SSC in Science",
+    institution: "Peshawar Model School",
+    duration: "2015 - 2016",
+    description: "Completed secondary school certificate with science subjects.",
+    achievements: [
+      "Participated in regional science competitions",
+      "Active member of school debate club"
+    ]
   }
 ];
 
