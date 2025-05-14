@@ -31,7 +31,7 @@ const Admin = () => {
   // Check authentication
   useEffect(() => {
     if (!sessionLoading && !session) {
-      toast.error("Unauthorized access");
+      toast.error("Unauthorized access. Please log in.");
       navigate('/');
     }
   }, [session, sessionLoading, navigate]);
@@ -48,6 +48,7 @@ const Admin = () => {
         if (error) throw error;
         
         setMessages(data || []);
+        console.log("Fetched messages:", data);
       } catch (error) {
         console.error('Error fetching messages:', error);
         toast.error('Failed to load messages');
