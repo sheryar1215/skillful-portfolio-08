@@ -1,8 +1,15 @@
 
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter, Phone } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, Phone, Send } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useSupabaseClient } from '@/hooks/useSupabase';
 
 const socialLinks = [
   {
@@ -37,31 +44,64 @@ const socialLinks = [
   }
 ];
 
+// Form schema validation with Zod
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const supabase = useSupabaseClient();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  // Initialize form with react-hook-form
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: ""
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Save message to Supabase
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          created_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+
       toast.success("Your message has been sent!", {
         description: "I'll get back to you as soon as possible.",
       });
-      setFormData({ name: "", email: "", message: "" });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting message:', error);
+      toast.error("Failed to send message", {
+        description: "Please try again later.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -83,76 +123,95 @@ const Contact = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-32 transition-all duration-500"></span>
             </h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="group">
-                <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="contact-input transform transition-transform focus:-translate-y-1 focus:shadow-md"
-                  placeholder="John Doe"
+                  render={({ field }) => (
+                    <FormItem className="group">
+                      <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
+                        Your Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          className="contact-input transform transition-transform focus:-translate-y-1 focus:shadow-md"
+                          placeholder="John Doe"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <div className="group">
-                <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
+                
+                <FormField
+                  control={form.control}
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="contact-input transform transition-transform focus:-translate-y-1 focus:shadow-md"
-                  placeholder="john@example.com"
+                  render={({ field }) => (
+                    <FormItem className="group">
+                      <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
+                        Email Address
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="email"
+                          className="contact-input transform transition-transform focus:-translate-y-1 focus:shadow-md"
+                          placeholder="john@example.com"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <div className="group">
-                <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                  Message
-                </label>
-                <textarea
-                  id="message"
+                
+                <FormField
+                  control={form.control}
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="contact-input resize-none transform transition-transform focus:-translate-y-1 focus:shadow-md"
-                  placeholder="I'd like to discuss a project..."
+                  render={({ field }) => (
+                    <FormItem className="group">
+                      <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
+                        Message
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea
+                          {...field}
+                          rows={5}
+                          className="contact-input resize-none transform transition-transform focus:-translate-y-1 focus:shadow-md"
+                          placeholder="I'd like to discuss a project..."
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "button-primary w-full flex items-center justify-center hover:-translate-y-1 transition-transform",
-                  isSubmitting && "opacity-70 cursor-not-allowed"
-                )}
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </>
-                ) : (
-                  "Send Message"
-                )}
-              </button>
-            </form>
+                
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={cn(
+                    "button-primary w-full flex items-center justify-center gap-2 hover:-translate-y-1 transition-transform",
+                    isSubmitting && "opacity-70 cursor-not-allowed"
+                  )}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-primary-foreground" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </Form>
           </div>
           
           <div className="opacity-0 animate-slide-up-delay-3 group hover:-translate-y-1 transition-transform duration-300">
