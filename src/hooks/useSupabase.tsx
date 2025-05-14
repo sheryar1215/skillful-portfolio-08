@@ -2,12 +2,35 @@
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 
-// These will be provided when connected to Supabase
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+// Check if environment variables are available and provide a fallback for development
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// Create a Supabase client
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Create a Supabase client with proper error handling
+const createSupabaseClient = () => {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Supabase credentials are missing. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY environment variables.');
+    // Return a mock client during development to prevent the app from crashing
+    return {
+      auth: {
+        getSession: () => Promise.resolve({ data: { session: null } }),
+        onAuthStateChange: () => ({ 
+          data: { subscription: { unsubscribe: () => {} } }
+        })
+      },
+      from: () => ({
+        insert: () => ({ error: new Error('Supabase is not configured') }),
+        select: () => ({ 
+          order: () => Promise.resolve({ data: [], error: new Error('Supabase is not configured') })
+        })
+      })
+    };
+  }
+  
+  return createClient(supabaseUrl, supabaseAnonKey);
+};
+
+const supabase = createSupabaseClient();
 
 export const useSupabaseClient = () => {
   return supabase;
@@ -37,3 +60,4 @@ export const useSupabaseSession = () => {
 
   return { session, loading };
 };
+
