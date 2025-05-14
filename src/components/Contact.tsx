@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Twitter, Phone, Send } from 'lucide-react';
 import { toast } from 'sonner';
@@ -83,8 +82,7 @@ const Contact = () => {
         .insert({
           name: data.name,
           email: data.email,
-          message: data.message,
-          created_at: new Date().toISOString()
+          message: data.message
         });
 
       if (error) throw error;
