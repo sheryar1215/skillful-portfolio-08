@@ -1,11 +1,12 @@
+
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
-  name: string;
+  name?: string;  // Make name prop optional
 }
 
-const Navbar: React.FC<NavbarProps> = ({ name }) => {
+const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {  // Add default value
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {

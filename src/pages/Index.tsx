@@ -52,8 +52,8 @@ const Index = () => {
 
   return (
     <main className="bg-background text-foreground min-h-screen transition-colors duration-300">
-      <Navbar />
-      <Hero />
+      <Navbar /> {/* Now this works without the name prop */}
+      <Hero profileImage="/lovable-uploads/ae2bbb29-4f54-44a5-b7e2-84be873b79b4.png" />
       <About />
       <Projects />
       <Experience />
