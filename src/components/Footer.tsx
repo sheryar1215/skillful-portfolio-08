@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-border mt-8 pt-6 text-center text-muted-foreground">
           <TranslatedText>
-            © {currentYear.toString()} Sheryar Khan. All rights reserved.
+            © {currentYear} Sheryar Khan. All rights reserved.
           </TranslatedText>
         </div>
       </div>

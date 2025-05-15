@@ -60,21 +60,28 @@ serve(async (req) => {
             content: `Generate a theme based on this mood: ${mood}`
           }
         ],
+        temperature: 0.7,
       }),
     })
 
     const data = await response.json()
-    let themeData
+    
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      console.error('Unexpected API response format:', data);
+      throw new Error('Unexpected response from OpenAI API');
+    }
+    
+    let themeData;
 
     try {
-      themeData = JSON.parse(data.choices[0].message.content)
+      themeData = JSON.parse(data.choices[0].message.content);
     } catch (e) {
       // If parsing fails, try to extract JSON from the response
-      const jsonMatch = data.choices[0].message.content.match(/\{[\s\S]*\}/)
+      const jsonMatch = data.choices[0].message.content.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        themeData = JSON.parse(jsonMatch[0])
+        themeData = JSON.parse(jsonMatch[0]);
       } else {
-        throw new Error('Failed to parse theme data')
+        throw new Error('Failed to parse theme data');
       }
     }
 

@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { Language, languages, translateText } from '@/services/translationService';
 
@@ -19,7 +18,7 @@ interface LanguageProviderProps {
 export function LanguageProvider({ children }: LanguageProviderProps) {
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
   const [isTranslating, setIsTranslating] = useState(false);
-  const [translations, setTranslations] = useState<Record<string, Record<Language, string>>>({});
+  const [translations, setTranslations] = useState<Record<string, Record<string, string>>>({});
 
   const translate = async (text: string): Promise<string> => {
     if (currentLanguage === 'en') return text;
@@ -33,11 +32,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     try {
       const translatedText = await translateText(text, currentLanguage);
       
-      // Save the translation for future use - Fixed type issue here
+      // Save the translation for future use
       setTranslations(prev => ({
         ...prev,
         [text]: {
-          ...(prev[text] || {} as Record<Language, string>),
+          ...(prev[text] || {}),
           [currentLanguage]: translatedText
         }
       }));
@@ -82,6 +81,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   };
 
   const changeLanguage = (lang: Language) => {
+    console.log("Changing language to:", lang);
     setCurrentLanguage(lang);
     document.documentElement.lang = lang;
     localStorage.setItem('preferredLanguage', lang);

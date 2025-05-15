@@ -24,6 +24,8 @@ serve(async (req) => {
       throw new Error('OpenAI API key not configured');
     }
 
+    console.log(`Translating text to ${targetLanguage}: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}"`);
+
     // Use OpenAI to translate the text
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -50,10 +52,12 @@ serve(async (req) => {
     const data = await response.json();
 
     if (!response.ok) {
+      console.error('OpenAI API error response:', data);
       throw new Error(`OpenAI API error: ${data.error?.message || 'Unknown error'}`);
     }
 
     const translatedText = data.choices[0].message.content.trim();
+    console.log(`Translation successful: "${translatedText.substring(0, 50)}${translatedText.length > 50 ? '...' : ''}"`);
 
     return new Response(
       JSON.stringify({ translatedText }),
