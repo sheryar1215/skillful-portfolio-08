@@ -1,37 +1,54 @@
 
 import React from 'react';
-import { TranslatedText } from './TranslatedText';
+import { TranslatedText } from '@/components/TranslatedText';
+import SocialLinks from '@/components/SocialLinks';
 
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear(); // This returns a number
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="py-10 mt-20 border-t border-border">
+    <footer className="bg-secondary/50 py-10 mt-20">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center text-sm text-muted-foreground">
-          <div className="flex items-center justify-center space-x-4 mb-4">
-            <a href="#home" className="hover:text-primary transition-colors">
-              <TranslatedText>Home</TranslatedText>
-            </a>
-            <a href="#about" className="hover:text-primary transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-lg font-bold mb-4">
+              <TranslatedText>Sheryar Khan</TranslatedText>
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              <TranslatedText>Computer Science Graduate & Full-Stack Developer</TranslatedText>
+            </p>
+            <SocialLinks />
+          </div>
+          <div>
+            <h3 className="text-lg font-bold mb-4">
+              <TranslatedText>Contact</TranslatedText>
+            </h3>
+            <p className="text-muted-foreground">
+              <TranslatedText>Email: contact@sheryarkhan.com</TranslatedText>
+            </p>
+            <p className="text-muted-foreground">
+              <TranslatedText>Location: Toronto, Canada</TranslatedText>
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold mb-4">
+              <TranslatedText>Links</TranslatedText>
+            </h3>
+            <a href="#about" className="block text-muted-foreground hover:text-foreground transition-colors mb-1">
               <TranslatedText>About</TranslatedText>
             </a>
-            <a href="#experience" className="hover:text-primary transition-colors">
-              <TranslatedText>Experience</TranslatedText>
-            </a>
-            <a href="#projects" className="hover:text-primary transition-colors">
+            <a href="#projects" className="block text-muted-foreground hover:text-foreground transition-colors mb-1">
               <TranslatedText>Projects</TranslatedText>
             </a>
-            <a href="#contact" className="hover:text-primary transition-colors">
-              <TranslatedText>Contact</TranslatedText>
+            <a href="#experience" className="block text-muted-foreground hover:text-foreground transition-colors mb-1">
+              <TranslatedText>Experience</TranslatedText>
             </a>
           </div>
-          <p>
-            {/* Fix: Convert array to string by concatenating the parts */}
-            <TranslatedText>
-              © {currentYear.toString()} Sheryar Khan. All rights reserved.
-            </TranslatedText>
-          </p>
+        </div>
+        <div className="border-t border-border mt-8 pt-6 text-center text-muted-foreground">
+          <TranslatedText>
+            © {currentYear.toString()} Sheryar Khan. All rights reserved.
+          </TranslatedText>
         </div>
       </div>
     </footer>

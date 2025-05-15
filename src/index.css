@@ -44,6 +44,10 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Font variables for custom theme */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
   }
 
   .dark {
@@ -87,7 +91,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading, 'Inter', sans-serif);
   }
 
   ::-webkit-scrollbar {
@@ -100,6 +109,19 @@
   
   ::-webkit-scrollbar-thumb {
     @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
+  }
+  
+  /* Button style variations */
+  body.button-rounded button:not(.no-theme-change) {
+    @apply rounded-md;
+  }
+  
+  body.button-pill button:not(.no-theme-change) {
+    @apply rounded-full;
+  }
+  
+  body.button-square button:not(.no-theme-change) {
+    @apply rounded-none;
   }
 }
 

@@ -8,6 +8,7 @@ import Experience from '@/components/Experience';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import ThemeCustomizer from '@/components/ThemeCustomizer';
 import { useLanguage } from '@/hooks/useLanguage';
 import { toast } from '@/hooks/use-toast';
 
@@ -78,6 +79,7 @@ const Index = () => {
       <Education />
       <Contact />
       <Footer />
+      <ThemeCustomizer />
       
       {/* Loading indicator for translations */}
       {isTranslating && (
