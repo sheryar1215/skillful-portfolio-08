@@ -27,6 +27,7 @@ const Footer: React.FC = () => {
             </a>
           </div>
           <p>
+            {/* Fix: Convert array to string by concatenating the parts */}
             <TranslatedText>
               © {currentYear.toString()} Sheryar Khan. All rights reserved.
             </TranslatedText>
