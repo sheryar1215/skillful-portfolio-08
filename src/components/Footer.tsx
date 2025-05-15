@@ -1,48 +1,34 @@
 
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
 import { TranslatedText } from './TranslatedText';
 
-const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  const currentYear = new Date().getFullYear();
-
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear(); // This returns a number
+  
   return (
-    <footer className="bg-secondary py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div>
-            <div className="text-2xl font-display font-bold mb-2">
-              <span className="sr-only">Sheryar Khan</span>
-              <span className="bg-foreground text-background px-2 py-1 rounded mr-1">SK</span>
-            </div>
-            
-            <p className="text-muted-foreground text-sm mt-2">
-              <TranslatedText>&copy; {currentYear} Sheryar Khan. All rights reserved.</TranslatedText>
-            </p>
+    <footer className="py-10 mt-20 border-t border-border">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col items-center text-sm text-muted-foreground">
+          <div className="flex items-center justify-center space-x-4 mb-4">
+            <a href="#home" className="hover:text-primary transition-colors">
+              <TranslatedText>Home</TranslatedText>
+            </a>
+            <a href="#about" className="hover:text-primary transition-colors">
+              <TranslatedText>About</TranslatedText>
+            </a>
+            <a href="#experience" className="hover:text-primary transition-colors">
+              <TranslatedText>Experience</TranslatedText>
+            </a>
+            <a href="#projects" className="hover:text-primary transition-colors">
+              <TranslatedText>Projects</TranslatedText>
+            </a>
+            <a href="#contact" className="hover:text-primary transition-colors">
+              <TranslatedText>Contact</TranslatedText>
+            </a>
           </div>
-          
-          <div className="mt-6 md:mt-0">
-            <button
-              onClick={scrollToTop}
-              className="p-3 rounded-full bg-background hover:bg-background/80 transition-colors"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp className="h-5 w-5 text-foreground" />
-            </button>
-          </div>
-        </div>
-        
-        <div className="mt-8 pt-8 border-t border-border/50">
-          <p className="text-center text-sm text-muted-foreground">
+          <p>
             <TranslatedText>
-              Designed and built by Sheryar Khan - Full Stack Developer based in Peshawar, Pakistan.
+              © {currentYear.toString()} Sheryar Khan. All rights reserved.
             </TranslatedText>
           </p>
         </div>

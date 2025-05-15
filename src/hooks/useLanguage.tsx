@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { Language, languages, translateText } from '@/services/translationService';
 
@@ -32,11 +33,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     try {
       const translatedText = await translateText(text, currentLanguage);
       
-      // Save the translation for future use
+      // Save the translation for future use - Fixed type issue here
       setTranslations(prev => ({
         ...prev,
         [text]: {
-          ...(prev[text] || {}),
+          ...(prev[text] || {} as Record<Language, string>),
           [currentLanguage]: translatedText
         }
       }));
