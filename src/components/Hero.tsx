@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { TranslatedText } from './TranslatedText';
 
 interface HeroProps {
   profileImage?: string;
@@ -18,24 +19,26 @@ const Hero: React.FC<HeroProps> = ({ profileImage }) => {
             </span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-muted-foreground">
-            Computer Science Graduate & Full-Stack Developer
+            <TranslatedText>Computer Science Graduate & Full-Stack Developer</TranslatedText>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
-            I build exceptional digital experiences with modern technologies, focusing on creating responsive, 
-            user-friendly web applications that deliver real value.
+            <TranslatedText>
+              I build exceptional digital experiences with modern technologies, focusing on creating responsive, 
+              user-friendly web applications that deliver real value.
+            </TranslatedText>
           </p>
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
             <a 
               href="#contact" 
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-medium transition-colors"
             >
-              Get in Touch
+              <TranslatedText>Get in Touch</TranslatedText>
             </a>
             <a 
               href="#projects" 
               className="bg-secondary hover:bg-secondary/80 text-secondary-foreground px-6 py-3 rounded-md font-medium transition-colors"
             >
-              View Projects
+              <TranslatedText>View Projects</TranslatedText>
             </a>
           </div>
         </div>

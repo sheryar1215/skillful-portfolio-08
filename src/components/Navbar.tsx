@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { LanguageSelector } from './LanguageSelector';
+import { TranslatedText } from './TranslatedText';
 
 interface NavbarProps {
   name?: string;  // Make name prop optional
@@ -26,55 +28,59 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {  // Add d
         
         <div className="hidden md:flex items-center space-x-6">
           <a href="#home" className="text-sm font-medium hover:text-primary transition-colors">
-            Home
+            <TranslatedText>Home</TranslatedText>
           </a>
           <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
-            About
+            <TranslatedText>About</TranslatedText>
           </a>
           <a href="#experience" className="text-sm font-medium hover:text-primary transition-colors">
-            Experience
+            <TranslatedText>Experience</TranslatedText>
           </a>
           <a href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
-            Projects
+            <TranslatedText>Projects</TranslatedText>
           </a>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
-            Contact
+            <TranslatedText>Contact</TranslatedText>
           </a>
           <a href="/admin" className="text-sm font-medium hover:text-primary transition-colors">
-            Admin
+            <TranslatedText>Admin</TranslatedText>
           </a>
+          <LanguageSelector />
         </div>
         
         {/* Mobile menu button */}
-        <button 
-          className="md:hidden p-2 rounded-md hover:bg-accent" 
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <LanguageSelector />
+          <button 
+            className="p-2 rounded-md hover:bg-accent" 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden container mx-auto px-4 py-2 pb-4 flex flex-col space-y-3 border-t border-border">
           <a href="#home" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            Home
+            <TranslatedText>Home</TranslatedText>
           </a>
           <a href="#about" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            About
+            <TranslatedText>About</TranslatedText>
           </a>
           <a href="#experience" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            Experience
+            <TranslatedText>Experience</TranslatedText>
           </a>
           <a href="#projects" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            Projects
+            <TranslatedText>Projects</TranslatedText>
           </a>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            Contact
+            <TranslatedText>Contact</TranslatedText>
           </a>
           <a href="/admin" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            Admin
+            <TranslatedText>Admin</TranslatedText>
           </a>
         </div>
       )}

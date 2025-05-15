@@ -8,8 +8,12 @@ import Experience from '@/components/Experience';
 import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { useLanguage } from '@/hooks/useLanguage';
+import { toast } from '@/hooks/use-toast';
 
 const Index = () => {
+  const { currentLanguage, isTranslating } = useLanguage();
+
   useEffect(() => {
     // Implement any initialization logic or analytics here
     document.title = "Sheryar Khan - Computer Science Graduate & Full-Stack Developer";
@@ -50,9 +54,23 @@ const Index = () => {
     };
   }, []);
 
+  // Show toast when language changes
+  useEffect(() => {
+    if (currentLanguage !== 'en') {
+      toast({
+        title: "Language Changed",
+        description: `The content is now being translated to ${currentLanguage === 'fr' ? 'French' : 
+                       currentLanguage === 'de' ? 'German' : 
+                       currentLanguage === 'ps' ? 'Pashto' : 
+                       currentLanguage === 'es' ? 'Spanish' : 'the selected language'}.`,
+        duration: 3000,
+      });
+    }
+  }, [currentLanguage]);
+
   return (
     <main className="bg-background text-foreground min-h-screen transition-colors duration-300">
-      <Navbar /> {/* Now this works without the name prop */}
+      <Navbar />
       <Hero profileImage="/lovable-uploads/ae2bbb29-4f54-44a5-b7e2-84be873b79b4.png" />
       <About />
       <Projects />
@@ -60,6 +78,13 @@ const Index = () => {
       <Education />
       <Contact />
       <Footer />
+      
+      {/* Loading indicator for translations */}
+      {isTranslating && (
+        <div className="fixed bottom-4 right-4 bg-primary text-primary-foreground py-2 px-4 rounded-md shadow-md animate-pulse">
+          Translating...
+        </div>
+      )}
     </main>
   );
 };

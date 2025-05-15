@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { TranslatedText } from './TranslatedText';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -23,7 +24,7 @@ const Footer = () => {
             </div>
             
             <p className="text-muted-foreground text-sm mt-2">
-              &copy; {currentYear} Sheryar Khan. All rights reserved.
+              <TranslatedText>&copy; {currentYear} Sheryar Khan. All rights reserved.</TranslatedText>
             </p>
           </div>
           
@@ -40,7 +41,9 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-border/50">
           <p className="text-center text-sm text-muted-foreground">
-            Designed and built by Sheryar Khan - Full Stack Developer based in Peshawar, Pakistan.
+            <TranslatedText>
+              Designed and built by Sheryar Khan - Full Stack Developer based in Peshawar, Pakistan.
+            </TranslatedText>
           </p>
         </div>
       </div>
