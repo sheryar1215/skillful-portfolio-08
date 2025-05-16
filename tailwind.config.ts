@@ -66,7 +66,7 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'sans-serif'],
+				display: ['Playfair Display', 'serif'],
 				mono: ['SF Mono', 'monospace'],
 			},
 			borderRadius: {
@@ -124,6 +124,14 @@ export default {
 						transform: 'translateY(-15px)',
 						animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
 					}
+				},
+				flipCard: {
+					'0%': { transform: 'rotateY(0deg)' },
+					'100%': { transform: 'rotateY(180deg)' }
+				},
+				fadeInScale: {
+					'0%': { opacity: '0', transform: 'scale(0.95)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
 				}
 			},
 			animation: {
@@ -141,10 +149,20 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'shimmer': 'shimmer 2s linear infinite',
 				'bounce-slow': 'bounce 3s infinite',
+				'flip-card': 'flipCard 0.8s ease-out forwards',
+				'fade-in-scale': 'fadeInScale 0.4s ease-out forwards',
 			},
 			backdropBlur: {
 				xs: '2px',
 			},
+			boxShadow: {
+				'glow': '0 0 15px 2px rgba(var(--primary-rgb), 0.3)',
+				'glow-lg': '0 0 25px 5px rgba(var(--primary-rgb), 0.4)',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

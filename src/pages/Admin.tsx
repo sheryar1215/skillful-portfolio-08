@@ -12,6 +12,15 @@ import {
   TableCell
 } from '@/components/ui/table';
 import { formatDistanceToNow } from 'date-fns';
+import { Loader2, ChevronDown, Trash2, Eye, Mail } from 'lucide-react';
+import { 
+  Card, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription, 
+  CardContent 
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 interface Message {
   id: number;
@@ -24,6 +33,7 @@ interface Message {
 const Admin = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expandedMessage, setExpandedMessage] = useState<number | null>(null);
   const supabase = useSupabaseClient();
   const { session, loading: sessionLoading } = useSupabaseSession();
   const navigate = useNavigate();
@@ -62,10 +72,41 @@ const Admin = () => {
     }
   }, [supabase, session]);
 
+  const toggleMessage = (id: number) => {
+    setExpandedMessage(expandedMessage === id ? null : id);
+  };
+
+  const deleteMessage = async (id: number) => {
+    try {
+      setLoading(true);
+      const { error } = await supabase
+        .from('contact_messages')
+        .delete()
+        .eq('id', id);
+        
+      if (error) throw error;
+      
+      setMessages(messages.filter(msg => msg.id !== id));
+      toast.success('Message deleted successfully');
+    } catch (error) {
+      console.error('Error deleting message:', error);
+      toast.error('Failed to delete message');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const replyToMessage = (email: string) => {
+    window.open(`mailto:${email}`, '_blank');
+  };
+
   if (sessionLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          <p className="text-muted-foreground">Checking authentication...</p>
+        </div>
       </div>
     );
   }
@@ -76,38 +117,96 @@ const Admin = () => {
 
   return (
     <div className="container mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8">Contact Messages</h1>
+      <Card className="mb-8 bg-gradient-to-r from-secondary/30 to-background border-primary/10">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Mail className="h-5 w-5 text-primary" />
+            Contact Messages Dashboard
+          </CardTitle>
+          <CardDescription>
+            Manage and respond to messages from your portfolio visitors
+          </CardDescription>
+        </CardHeader>
+      </Card>
       
       {loading ? (
-        <div className="flex justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+        <div className="flex justify-center my-12">
+          <div className="flex flex-col items-center gap-3">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <p className="text-muted-foreground">Loading messages...</p>
+          </div>
         </div>
       ) : messages.length === 0 ? (
-        <div className="text-center py-10 bg-secondary/20 rounded-lg">
+        <div className="text-center py-16 bg-secondary/20 rounded-lg border border-primary/5">
           <p className="text-lg text-muted-foreground">No messages received yet.</p>
+          <p className="text-sm text-muted-foreground/70 mt-2">Messages from your contact form will appear here.</p>
         </div>
       ) : (
-        <div className="rounded-lg border shadow-sm overflow-hidden">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Message</TableHead>
-                <TableHead>Received</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {messages.map((msg) => (
-                <TableRow key={msg.id}>
-                  <TableCell className="font-medium">{msg.name}</TableCell>
-                  <TableCell>{msg.email}</TableCell>
-                  <TableCell className="max-w-xs truncate">{msg.message}</TableCell>
-                  <TableCell>{formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <div className="space-y-4">
+          {messages.map((msg) => (
+            <Card 
+              key={msg.id} 
+              className="transition-all duration-300 hover:shadow-md overflow-hidden"
+            >
+              <div 
+                className="p-4 cursor-pointer flex items-center justify-between"
+                onClick={() => toggleMessage(msg.id)}
+              >
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-medium text-foreground">{msg.name}</h3>
+                    <span className="text-xs text-muted-foreground bg-secondary/50 px-2 py-0.5 rounded-full">
+                      {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{msg.email}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className="text-primary"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleMessage(msg.id);
+                    }}
+                  >
+                    <ChevronDown 
+                      className={`h-5 w-5 transition-transform ${expandedMessage === msg.id ? 'transform rotate-180' : ''}`} 
+                    />
+                  </Button>
+                </div>
+              </div>
+              
+              {expandedMessage === msg.id && (
+                <div className="p-4 pt-0 border-t border-secondary/50 animate-fade-in">
+                  <div className="bg-secondary/10 p-4 rounded-md my-2">
+                    <p className="text-foreground/80 whitespace-pre-wrap">{msg.message}</p>
+                  </div>
+                  <div className="flex justify-end gap-2 mt-3">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center gap-1"
+                      onClick={() => replyToMessage(msg.email)}
+                    >
+                      <Mail className="h-4 w-4" />
+                      Reply
+                    </Button>
+                    <Button 
+                      variant="destructive" 
+                      size="sm" 
+                      className="flex items-center gap-1"
+                      onClick={() => deleteMessage(msg.id)}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      Delete
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </Card>
+          ))}
         </div>
       )}
     </div>

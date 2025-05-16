@@ -1,8 +1,9 @@
 
-import React from 'react';
-import { GraduationCap, Award, Badge, Book } from 'lucide-react';
+import React, { useState } from 'react';
+import { GraduationCap, Award, Badge, Book, ChevronDown, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 
 const education = [
   {
@@ -111,8 +112,41 @@ const certifications = [
 ];
 
 const Education = () => {
+  const [activeCertificate, setActiveCertificate] = useState<number | null>(null);
+  const [filter, setFilter] = useState('all');
+
+  const toggleCertificate = (index: number) => {
+    setActiveCertificate(activeCertificate === index ? null : index);
+  };
+
+  const filteredCertificates = filter === 'all' 
+    ? certifications 
+    : certifications.filter(cert => cert.issuer.toLowerCase().includes(filter.toLowerCase()));
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section id="education" className="py-24 bg-gradient-to-br from-secondary/30 to-background">
+    <section id="education" className="py-24 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/30" />
+        <div className="absolute top-20 left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-60 h-60 bg-secondary/20 rounded-full blur-3xl" />
+      </div>
+      
       <div className="section-container">
         <h2 className="section-title">Education & Certifications</h2>
         <p className="section-subtitle">
@@ -120,17 +154,32 @@ const Education = () => {
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
-          <div className="opacity-0 animate-slide-up-delay-2">
+          <motion.div 
+            className="opacity-0" 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="h-6 w-6 text-primary" />
               <h3 className="text-2xl font-display font-bold">Education</h3>
             </div>
             
-            <div className="space-y-8">
+            <motion.div 
+              className="space-y-8"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
               {education.map((edu, index) => (
-                <div 
+                <motion.div 
                   key={index} 
-                  className="glass hover-scale hover-glow rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                  className="glass hover-scale hover-glow rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 border border-primary/10"
+                  variants={item}
+                  whileHover={{ 
+                    scale: 1.03,
+                    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                  }}
                 >
                   <div className="mb-1">
                     <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
@@ -148,7 +197,7 @@ const Education = () => {
                     {edu.description}
                   </p>
                   
-                  <div className="space-y-2 mt-3 bg-secondary/50 p-3 rounded-lg">
+                  <div className="space-y-2 mt-3 bg-secondary/50 p-3 rounded-lg backdrop-blur-sm">
                     <h5 className="text-sm font-medium text-foreground/90">Achievements:</h5>
                     <ul className="list-disc pl-5 space-y-1">
                       {edu.achievements.map((achievement, i) => (
@@ -158,65 +207,119 @@ const Education = () => {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
-          <div className="opacity-0 animate-slide-up-delay-3">
+          <motion.div 
+            className="opacity-0" 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <div className="flex items-center gap-3 mb-8">
               <Award className="h-6 w-6 text-primary" />
               <h3 className="text-2xl font-display font-bold">Certifications</h3>
             </div>
-            
-            <div className="grid grid-cols-1 gap-6">
-              {certifications.map((cert, index) => (
-                <Card 
-                  key={index} 
-                  className={cn(
-                    "overflow-hidden transition-all hover:-translate-y-1 duration-300 hover:shadow-lg hover:shadow-primary/10",
-                    index % 2 === 0 ? "bg-gradient-to-br from-card to-secondary/30 border-primary/10" : "bg-gradient-to-br from-background to-secondary/20 border-primary/5"
-                  )}
-                >
-                  <div className="flex flex-col md:flex-row">
-                    {cert.image && (
-                      <div className="w-full md:w-1/3 h-48 overflow-hidden group relative">
-                        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <img 
-                          src={cert.image} 
-                          alt={cert.title} 
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    )}
-                    <CardContent className={cn(
-                      "flex flex-col justify-between", 
-                      cert.image ? "w-full md:w-2/3" : "w-full"
-                    )}>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <Badge className="h-4 w-4 text-primary" />
-                          <h4 className="font-display font-medium text-lg mt-2">{cert.title}</h4>
-                        </div>
-                        {cert.description && (
-                          <p className="text-sm text-foreground/80 mt-1">{cert.description}</p>
-                        )}
-                      </div>
-                      <div className="flex items-center justify-between mt-4 bg-secondary/30 px-3 py-2 rounded-md">
-                        <p className="text-primary/80 font-medium">{cert.issuer}</p>
-                        <p className="text-sm text-foreground/70 bg-primary/10 px-2 py-0.5 rounded-full">{cert.date}</p>
-                      </div>
-                      {cert.credentialId && (
-                        <p className="text-xs text-muted-foreground/80 mt-2">
-                          Credential ID: {cert.credentialId}
-                        </p>
-                      )}
-                    </CardContent>
-                  </div>
-                </Card>
-              ))}
+
+            <div className="mb-6 flex flex-wrap gap-2">
+              <button 
+                onClick={() => setFilter('all')}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${filter === 'all' ? 'bg-primary text-primary-foreground' : 'bg-secondary/50 text-foreground/70 hover:bg-secondary'}`}
+              >
+                All
+              </button>
+              <button 
+                onClick={() => setFilter('edwards')}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${filter === 'edwards' ? 'bg-primary text-primary-foreground' : 'bg-secondary/50 text-foreground/70 hover:bg-secondary'}`}
+              >
+                Edwards College
+              </button>
+              <button 
+                onClick={() => setFilter('uop')}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${filter === 'uop' ? 'bg-primary text-primary-foreground' : 'bg-secondary/50 text-foreground/70 hover:bg-secondary'}`}
+              >
+                UoP
+              </button>
+              <button 
+                onClick={() => setFilter('hamza')}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${filter === 'hamza' ? 'bg-primary text-primary-foreground' : 'bg-secondary/50 text-foreground/70 hover:bg-secondary'}`}
+              >
+                Hamza Foundation
+              </button>
             </div>
-          </div>
+            
+            <motion.div 
+              className="grid grid-cols-1 gap-6"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              {filteredCertificates.map((cert, index) => (
+                <motion.div key={index} variants={item}>
+                  <Card 
+                    className={cn(
+                      "overflow-hidden transition-all hover:-translate-y-1 duration-300 hover:shadow-lg hover:shadow-primary/20 cursor-pointer",
+                      index % 2 === 0 
+                        ? "bg-gradient-to-br from-card to-secondary/30 border-primary/10" 
+                        : "bg-gradient-to-br from-background to-secondary/20 border-primary/5"
+                    )}
+                    onClick={() => toggleCertificate(index)}
+                  >
+                    <div className="flex flex-col">
+                      {cert.image && activeCertificate === index && (
+                        <motion.div 
+                          className="w-full h-64 overflow-hidden"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "16rem", opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="relative w-full h-full group">
+                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <img 
+                              src={cert.image} 
+                              alt={cert.title} 
+                              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+                        </motion.div>
+                      )}
+                      <CardContent className="flex flex-col justify-between p-6">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <Badge className="h-4 w-4 text-primary" />
+                              <h4 className="font-display font-medium text-lg">{cert.title}</h4>
+                            </div>
+                            <button className="text-primary/70 hover:text-primary transition-colors">
+                              {activeCertificate === index ? (
+                                <ChevronUp className="h-5 w-5" />
+                              ) : (
+                                <ChevronDown className="h-5 w-5" />
+                              )}
+                            </button>
+                          </div>
+                          {cert.description && (
+                            <p className="text-sm text-foreground/80 mt-2">{cert.description}</p>
+                          )}
+                        </div>
+                        <div className="flex items-center justify-between mt-4 bg-secondary/30 px-3 py-2 rounded-md backdrop-blur-sm">
+                          <p className="text-primary/80 font-medium">{cert.issuer}</p>
+                          <p className="text-sm text-foreground/70 bg-primary/10 px-2 py-0.5 rounded-full">{cert.date}</p>
+                        </div>
+                        {cert.credentialId && (
+                          <p className="text-xs text-muted-foreground/80 mt-2">
+                            Credential ID: {cert.credentialId}
+                          </p>
+                        )}
+                      </CardContent>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
