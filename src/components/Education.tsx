@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { GraduationCap, Award, Certificate, Book } from 'lucide-react';
+import { GraduationCap, Award, Badge, Book } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -195,7 +195,7 @@ const Education = () => {
                     )}>
                       <div>
                         <div className="flex items-center gap-2">
-                          <Certificate className="h-4 w-4 text-primary" />
+                          <Badge className="h-4 w-4 text-primary" />
                           <h4 className="font-display font-medium text-lg mt-2">{cert.title}</h4>
                         </div>
                         {cert.description && (
