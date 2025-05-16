@@ -2,6 +2,7 @@
 import React from 'react';
 import { TranslatedText } from '@/components/TranslatedText';
 import SocialLinks from '@/components/SocialLinks';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,12 +24,20 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-foreground">
               <TranslatedText>Contact</TranslatedText>
             </h3>
-            <p className="text-foreground/80">
-              <TranslatedText>Email: contact@sheryarkhan.com</TranslatedText>
-            </p>
-            <p className="text-foreground/80">
-              <TranslatedText>Location: Toronto, Canada</TranslatedText>
-            </p>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-foreground/80">
+                <Mail className="w-4 h-4" />
+                <TranslatedText>Email: 1215sheryarkhan@gmail.com</TranslatedText>
+              </div>
+              <div className="flex items-center gap-2 text-foreground/80">
+                <Phone className="w-4 h-4" />
+                <TranslatedText>Phone: +923161290066</TranslatedText>
+              </div>
+              <div className="flex items-center gap-2 text-foreground/80">
+                <MapPin className="w-4 h-4" />
+                <TranslatedText>Location: Peshawar, Pakistan</TranslatedText>
+              </div>
+            </div>
           </div>
           <div>
             <h3 className="text-lg font-bold mb-4 text-foreground">
@@ -46,10 +55,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-border mt-8 pt-6 text-center text-foreground/80">
-          {/* Fix: Convert the entire content to a single string */}
-          <TranslatedText>
-            © {currentYear.toString()} Sheryar Khan. All rights reserved.
-          </TranslatedText>
+          {/* Fix: Convert the entire content to a single string with concatenation to fix TypeScript error */}
+          <TranslatedText>{`© ${currentYear.toString()} Sheryar Khan. All rights reserved.`}</TranslatedText>
         </div>
       </div>
     </footer>

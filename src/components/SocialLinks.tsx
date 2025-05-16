@@ -45,7 +45,7 @@ export const socialLinks: SocialLink[] = [
 
 const SocialLinks = () => {
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="grid grid-cols-2 gap-3">
       {socialLinks.map((link, index) => {
         const Icon = link.icon;
         return (
@@ -55,12 +55,13 @@ const SocialLinks = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "flex items-center gap-3 p-4 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors transform hover:-translate-y-1 transition-transform shadow-sm hover:shadow-md",
+              "flex items-center justify-center gap-2 p-2 rounded-lg bg-secondary/30 hover:bg-secondary/70 transition-all transform hover:-translate-y-1 shadow-sm hover:shadow-md",
               link.color
             )}
+            aria-label={`Connect with Sheryar Khan on ${link.name}`}
           >
-            <Icon className="h-5 w-5" />
-            <span className="font-medium">{link.name}</span>
+            <Icon className="h-4 w-4" />
+            <span className="text-sm font-medium">{link.name}</span>
           </a>
         );
       })}
