@@ -46,6 +46,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-border mt-8 pt-6 text-center text-foreground/80">
+          {/* Fix: Convert the entire content to a single string */}
           <TranslatedText>
             © {currentYear.toString()} Sheryar Khan. All rights reserved.
           </TranslatedText>
