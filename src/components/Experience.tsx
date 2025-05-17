@@ -4,7 +4,7 @@ import { Briefcase } from 'lucide-react';
 
 const experiences = [
   {
-    company: "6PM M",
+    company: "6PM Media",
     position: "Full Stack Developer Intern",
     duration: "December 2024 - March 2025",
     description: "Worked as a full-stack developer focusing on MERN stack technologies to build scalable and responsive web applications. Implemented SEO strategies for React applications and learned workflow automation with n8n and AI integration with Lovable AI.",
