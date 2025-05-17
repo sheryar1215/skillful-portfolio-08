@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSupabaseClient, useSupabaseSession } from '@/hooks/useSupabase';
+import { useAdmin } from '@/hooks/useAdmin';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import {
@@ -12,7 +13,7 @@ import {
   TableCell
 } from '@/components/ui/table';
 import { formatDistanceToNow } from 'date-fns';
-import { Loader2, ChevronDown, Trash2, Eye, Mail } from 'lucide-react';
+import { Loader2, ChevronDown, Trash2, Eye, Mail, LogOut } from 'lucide-react';
 import { 
   Card, 
   CardHeader, 
@@ -36,15 +37,22 @@ const Admin = () => {
   const [expandedMessage, setExpandedMessage] = useState<number | null>(null);
   const supabase = useSupabaseClient();
   const { session, loading: sessionLoading } = useSupabaseSession();
+  const { isAdmin, loading: adminLoading } = useAdmin();
   const navigate = useNavigate();
   
-  // Check authentication
+  // Check authentication and admin status
   useEffect(() => {
     if (!sessionLoading && !session) {
-      toast.error("Unauthorized access. Please log in.");
+      toast.error("Please log in to access the admin area");
+      navigate('/auth');
+      return;
+    }
+    
+    if (!adminLoading && !isAdmin && session) {
+      toast.error("You don't have admin access");
       navigate('/');
     }
-  }, [session, sessionLoading, navigate]);
+  }, [session, sessionLoading, isAdmin, adminLoading, navigate]);
 
   // Fetch messages
   useEffect(() => {
@@ -67,10 +75,10 @@ const Admin = () => {
       }
     };
 
-    if (session) {
+    if (session && isAdmin) {
       fetchMessages();
     }
-  }, [supabase, session]);
+  }, [supabase, session, isAdmin]);
 
   const toggleMessage = (id: number) => {
     setExpandedMessage(expandedMessage === id ? null : id);
@@ -99,33 +107,55 @@ const Admin = () => {
   const replyToMessage = (email: string) => {
     window.open(`mailto:${email}`, '_blank');
   };
+  
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast.success('Logged out successfully');
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      toast.error('Failed to log out');
+    }
+  };
 
-  if (sessionLoading) {
+  if (sessionLoading || adminLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="h-12 w-12 animate-spin text-primary" />
-          <p className="text-muted-foreground">Checking authentication...</p>
+          <p className="text-muted-foreground">Checking authorization...</p>
         </div>
       </div>
     );
   }
 
-  if (!session) {
+  if (!session || !isAdmin) {
     return null; // Will redirect in useEffect
   }
 
   return (
     <div className="container mx-auto py-12 px-4">
       <Card className="mb-8 bg-gradient-to-r from-secondary/30 to-background border-primary/10">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Mail className="h-5 w-5 text-primary" />
-            Contact Messages Dashboard
-          </CardTitle>
-          <CardDescription>
-            Manage and respond to messages from your portfolio visitors
-          </CardDescription>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <CardTitle className="flex items-center gap-2">
+              <Mail className="h-5 w-5 text-primary" />
+              Contact Messages Dashboard
+            </CardTitle>
+            <CardDescription>
+              Manage and respond to messages from your portfolio visitors
+            </CardDescription>
+          </div>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleLogout}
+            className="flex items-center gap-2"
+          >
+            <LogOut className="h-4 w-4" />
+            Logout
+          </Button>
         </CardHeader>
       </Card>
       

@@ -1,8 +1,13 @@
 
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn, LogOut } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { TranslatedText } from './TranslatedText';
+import { useSupabaseSession } from '@/hooks/useSupabase';
+import { useAdmin } from '@/hooks/useAdmin';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 interface NavbarProps {
   name?: string;  // Make name prop optional
@@ -10,6 +15,9 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {  // Add default value
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { session } = useSupabaseSession();
+  const { isAdmin } = useAdmin();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -17,6 +25,23 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {  // Add d
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+  };
+  
+  const handleLogin = () => {
+    navigate('/auth');
+    closeMobileMenu();
+  };
+  
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast.success('Logged out successfully');
+      navigate('/');
+      closeMobileMenu();
+    } catch (error) {
+      console.error('Error signing out:', error);
+      toast.error('Failed to log out');
+    }
   };
   
   return (
@@ -42,9 +67,28 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {  // Add d
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
             <TranslatedText>Contact</TranslatedText>
           </a>
-          <a href="/admin" className="text-sm font-medium hover:text-primary transition-colors">
-            <TranslatedText>Admin</TranslatedText>
-          </a>
+          {isAdmin && (
+            <a href="/admin" className="text-sm font-medium hover:text-primary transition-colors">
+              <TranslatedText>Admin</TranslatedText>
+            </a>
+          )}
+          {session ? (
+            <button 
+              onClick={handleLogout}
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <LogOut className="h-4 w-4" />
+              <TranslatedText>Logout</TranslatedText>
+            </button>
+          ) : (
+            <button 
+              onClick={handleLogin}
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <LogIn className="h-4 w-4" />
+              <TranslatedText>Login</TranslatedText>
+            </button>
+          )}
           <LanguageSelector />
         </div>
         
@@ -79,9 +123,28 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {  // Add d
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
             <TranslatedText>Contact</TranslatedText>
           </a>
-          <a href="/admin" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-            <TranslatedText>Admin</TranslatedText>
-          </a>
+          {isAdmin && (
+            <a href="/admin" className="text-sm font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
+              <TranslatedText>Admin</TranslatedText>
+            </a>
+          )}
+          {session ? (
+            <button 
+              onClick={handleLogout}
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <LogOut className="h-4 w-4" />
+              <TranslatedText>Logout</TranslatedText>
+            </button>
+          ) : (
+            <button 
+              onClick={handleLogin}
+              className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            >
+              <LogIn className="h-4 w-4" />
+              <TranslatedText>Login</TranslatedText>
+            </button>
+          )}
         </div>
       )}
     </nav>
