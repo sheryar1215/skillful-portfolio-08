@@ -85,15 +85,15 @@ const Projects = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="projects" className="py-24 bg-secondary/30">
+    <section id="projects" className="py-24 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       <div className="section-container">
-        <h2 className="section-title">Projects</h2>
-        <p className="section-subtitle">
+        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-slate-900 dark:text-white opacity-0 animate-slide-up">Projects</h2>
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 opacity-0 animate-slide-up-delay-1">
           A selection of my recent work, showcasing my skills and experience in building web applications.
         </p>
         
         <div className="flex justify-center mb-10 opacity-0 animate-slide-up-delay-2">
-          <div className="inline-flex bg-secondary rounded-lg p-1">
+          <div className="inline-flex bg-white dark:bg-slate-800 rounded-lg p-1 shadow-md">
             {["all", "frontend", "backend", "fullstack"].map((category) => (
               <button
                 key={category}
@@ -101,8 +101,8 @@ const Projects = () => {
                 className={cn(
                   "px-4 py-2 text-sm font-medium rounded-md transition-all",
                   filter === category 
-                    ? "bg-background text-foreground shadow-sm" 
-                    : "text-foreground/70 hover:text-foreground"
+                    ? "bg-blue-600 text-white shadow-sm" 
+                    : "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 )}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -123,9 +123,9 @@ const Projects = () => {
 
 const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
   return (
-    <div className="project-card flex flex-col h-full">
+    <div className="flex flex-col h-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border border-slate-200 dark:border-slate-700">
       <div className="relative h-48 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-10" />
         <img 
           src={project.image} 
           alt={project.title} 
@@ -134,15 +134,15 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
       </div>
       
       <div className="flex flex-col flex-grow p-6">
-        <h3 className="text-xl font-display font-bold mb-2">{project.title}</h3>
-        <p className="text-muted-foreground mb-4 flex-grow">
+        <h3 className="text-xl font-display font-bold mb-2 text-slate-900 dark:text-white">{project.title}</h3>
+        <p className="text-slate-600 dark:text-slate-300 mb-4 flex-grow">
           {project.description}
         </p>
         
         <div className="mb-4">
           <div className="flex flex-wrap gap-2 mt-2">
             {project.technologies.map((tech, index) => (
-              <span key={index} className="text-xs px-2 py-1 bg-secondary rounded-full">
+              <span key={index} className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full">
                 {tech}
               </span>
             ))}
@@ -154,7 +154,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             href={project.demoLink} 
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors"
+            className="flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
           >
             <ExternalLink className="h-4 w-4" />
             <span>Live Demo</span>
@@ -163,7 +163,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             href={project.repoLink} 
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors"
+            className="flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
           >
             <Github className="h-4 w-4" />
             <span>Repository</span>

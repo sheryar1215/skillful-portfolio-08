@@ -15,31 +15,31 @@ export const socialLinks: SocialLink[] = [
     name: "Email",
     icon: Mail,
     url: "mailto:1215sheryarkhan@gmail.com",
-    color: "hover:text-[#EA4335]"
+    color: "hover:text-blue-600"
   },
   {
     name: "Phone",
     icon: Phone,
     url: "tel:+923161290066",
-    color: "hover:text-[#4CAF50]"
+    color: "hover:text-green-600"
   },
   {
     name: "GitHub",
     icon: Github,
     url: "https://github.com/sheryar1215",
-    color: "hover:text-[#181717]"
+    color: "hover:text-slate-800"
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/sheryar-khan-2b34832ab",
-    color: "hover:text-[#0A66C2]"
+    color: "hover:text-blue-700"
   },
   {
     name: "Twitter",
     icon: Twitter,
     url: "https://x.com/SherKha40731606",
-    color: "hover:text-[#1DA1F2]"
+    color: "hover:text-sky-500"
   }
 ];
 
@@ -55,7 +55,7 @@ const SocialLinks = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "flex items-center justify-center gap-2 p-2 rounded-lg bg-secondary/30 hover:bg-secondary/70 transition-all transform hover:-translate-y-1 shadow-sm hover:shadow-md",
+              "flex items-center justify-center gap-2 p-2 rounded-lg bg-white/90 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-700 transition-all transform hover:-translate-y-1 shadow-sm hover:shadow-md",
               link.color
             )}
             aria-label={`Connect with Sheryar Khan on ${link.name}`}
