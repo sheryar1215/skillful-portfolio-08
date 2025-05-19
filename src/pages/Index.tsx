@@ -11,6 +11,9 @@ import Footer from '@/components/Footer';
 import ThemeCustomizer from '@/components/ThemeCustomizer';
 import { useLanguage } from '@/hooks/useLanguage';
 import { toast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { ArrowUp, Home } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const { currentLanguage, isTranslating } = useLanguage();
@@ -78,9 +81,36 @@ const Index = () => {
     applyMobileAnimations();
     window.addEventListener('resize', applyMobileAnimations);
 
+    // Fix hash link navigation by scrolling to the correct element
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          setTimeout(() => {
+            const navbarHeight = document.querySelector('nav')?.clientHeight || 0;
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: elementPosition - navbarHeight - 20,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      }
+    };
+
+    // Handle initial hash if present on page load
+    if (window.location.hash) {
+      handleHashChange();
+    }
+
+    // Add event listener for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
     return () => {
       observer.disconnect();
       window.removeEventListener('resize', applyMobileAnimations);
+      window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 
@@ -112,6 +142,19 @@ const Index = () => {
       <Footer />
       <ThemeCustomizer />
       
+      {/* Home button for easy navigation */}
+      <Button
+        asChild
+        className="fixed top-20 right-4 p-2 rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+        size="icon"
+        variant="default"
+        aria-label="Home"
+      >
+        <Link to="/">
+          <Home className="h-5 w-5" />
+        </Link>
+      </Button>
+      
       {/* Loading indicator for translations */}
       {isTranslating && (
         <div className="fixed bottom-4 right-4 bg-primary text-primary-foreground py-2 px-4 rounded-md shadow-md animate-pulse">
@@ -120,15 +163,15 @@ const Index = () => {
       )}
       
       {/* Scroll to top button */}
-      <button 
+      <Button 
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-4 left-4 p-2 bg-primary text-primary-foreground rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+        className="fixed bottom-4 left-4 p-2 rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+        variant="default"
+        size="icon"
         aria-label="Scroll to top"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-up">
-          <path d="m18 15-6-6-6 6"/>
-        </svg>
-      </button>
+        <ArrowUp className="h-5 w-5" />
+      </Button>
     </main>
   );
 };

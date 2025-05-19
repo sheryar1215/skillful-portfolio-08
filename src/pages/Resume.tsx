@@ -5,8 +5,63 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Download, Briefcase, GraduationCap, Award, Star } from 'lucide-react';
 import { TranslatedText } from '@/components/TranslatedText';
+import { toast } from '@/hooks/use-toast';
 
 const Resume = () => {
+  // Function to handle PDF download
+  const handleDownloadPDF = () => {
+    // In a real implementation, you would generate or fetch a PDF
+    // For this demo, we'll simulate it with a toast message
+    
+    toast({
+      title: "Download started",
+      description: "Your resume is being downloaded...",
+    });
+    
+    // Create a simple text file as a placeholder for the PDF
+    const content = `
+      Sheryar Khan - Resume
+      
+      Full Stack Developer
+      
+      Contact:
+      Email: 1215sheryarkhan@gmail.com
+      Phone: +92 316 1290066
+      
+      Education:
+      Bachelor of Computer Science - University of Peshawar (2017-2021)
+      
+      Experience:
+      - Full Stack Developer Intern at 6PM Media (Dec 2024 - Mar 2025)
+      - Freelance Web Developer (Jan 2023 - Nov 2024)
+      
+      Skills:
+      JavaScript, PHP, React, Node.js, Express, MongoDB, HTML, CSS, Tailwind CSS
+    `;
+    
+    // Create a Blob with the content
+    const blob = new Blob([content], { type: 'text/plain' });
+    
+    // Create a link element to trigger the download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'sheryar_khan_resume.txt'; // In a real app, this would be .pdf
+    
+    // Append to the document, click it, and then remove it
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Show completion toast
+    setTimeout(() => {
+      toast({
+        title: "Download complete",
+        description: "Resume has been downloaded successfully.",
+        variant: "default",
+      });
+    }, 1500);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -18,7 +73,7 @@ const Resume = () => {
             <p className="text-xl text-muted-foreground mb-4">Full Stack Developer</p>
             <p className="max-w-2xl text-muted-foreground">Computer Science graduate with expertise in web development, specializing in creating responsive and user-friendly applications using modern technologies.</p>
           </div>
-          <Button className="mt-6 md:mt-0 flex gap-2 items-center" size="lg">
+          <Button className="mt-6 md:mt-0 flex gap-2 items-center" size="lg" onClick={handleDownloadPDF}>
             <Download className="h-4 w-4" />
             <TranslatedText>Download PDF</TranslatedText>
           </Button>

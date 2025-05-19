@@ -34,6 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
   }, []);
   
   const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/' && !location.hash;
     if (path.startsWith('#') && location.pathname === '/') {
       return location.hash === path;
     }
@@ -41,13 +42,13 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
   };
   
   const navLinks = [
-    { href: "#home", label: "Home", showOnHome: true },
-    { href: "#about", label: "About", showOnHome: true },
-    { href: "#experience", label: "Experience", showOnHome: true },
-    { href: "#projects", label: "Projects", showOnHome: true },
-    { href: "#contact", label: "Contact", showOnHome: true },
-    { href: "/resume", label: "Resume", showOnHome: false },
-    { href: "/admin", label: "Admin", showOnHome: false }
+    { href: "/", label: "Home", showOnHome: false, showAlways: true },
+    { href: "#about", label: "About", showOnHome: true, showAlways: false },
+    { href: "#projects", label: "Projects", showOnHome: true, showAlways: false },
+    { href: "#experience", label: "Experience", showOnHome: true, showAlways: false },
+    { href: "#contact", label: "Contact", showOnHome: true, showAlways: false },
+    { href: "/resume", label: "Resume", showOnHome: true, showAlways: true },
+    { href: "/admin", label: "Admin", showOnHome: true, showAlways: true }
   ];
   
   const isHomePage = location.pathname === '/';
@@ -63,27 +64,21 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
         
         <div className="hidden md:flex items-center space-x-6">
           {navLinks
-            .filter(link => !link.href.startsWith('#') || isHomePage || !link.showOnHome)
-            .map((link, index) => {
-              // If it's a hash link on a non-home page, link to homepage + hash
-              const href = link.href.startsWith('#') && !isHomePage 
-                ? `/${link.href}` 
-                : link.href;
-                
-              return (
-                <Link 
-                  key={index}
-                  to={href}
-                  className={`text-sm font-medium transition-colors ${
-                    isActive(link.href) 
-                      ? 'text-primary' 
-                      : 'hover:text-primary'
-                  }`}
-                >
-                  <TranslatedText>{link.label}</TranslatedText>
-                </Link>
-              );
-            })}
+            .filter(link => (isHomePage && link.showOnHome) || (!isHomePage && link.showAlways) || link.showAlways)
+            .map((link, index) => (
+              <Link 
+                key={index}
+                to={link.href}
+                className={`text-sm font-medium transition-colors ${
+                  isActive(link.href) 
+                    ? 'text-primary' 
+                    : 'hover:text-primary'
+                }`}
+                onClick={closeMobileMenu}
+              >
+                <TranslatedText>{link.label}</TranslatedText>
+              </Link>
+            ))}
             
           <button 
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
@@ -122,28 +117,22 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
       {mobileMenuOpen && (
         <div className="md:hidden container mx-auto px-4 py-2 pb-4 flex flex-col space-y-3 border-t animate-fade-in">
           {navLinks
-            .filter(link => !link.href.startsWith('#') || isHomePage || !link.showOnHome)
-            .map((link, index) => {
-              const href = link.href.startsWith('#') && !isHomePage 
-                ? `/${link.href}` 
-                : link.href;
-                
-              return (
-                <Link
-                  key={index}
-                  to={href}
-                  className={`text-sm font-medium p-2 rounded-md transition-colors ${
-                    isActive(link.href) 
-                      ? 'bg-accent text-primary' 
-                      : 'hover:bg-accent/50'
-                  }`}
-                  onClick={closeMobileMenu}
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <TranslatedText>{link.label}</TranslatedText>
-                </Link>
-              );
-            })}
+            .filter(link => (isHomePage && link.showOnHome) || (!isHomePage && link.showAlways) || link.showAlways)
+            .map((link, index) => (
+              <Link
+                key={index}
+                to={link.href}
+                className={`text-sm font-medium p-2 rounded-md transition-colors ${
+                  isActive(link.href) 
+                    ? 'bg-accent text-primary' 
+                    : 'hover:bg-accent/50'
+                }`}
+                onClick={closeMobileMenu}
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <TranslatedText>{link.label}</TranslatedText>
+              </Link>
+            ))}
         </div>
       )}
     </nav>
