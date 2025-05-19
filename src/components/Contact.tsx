@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Twitter, Phone, Send } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -89,15 +89,18 @@ const Contact = () => {
 
       if (error) throw error;
 
-      toast.success("Your message has been sent!", {
+      toast({
+        title: "Your message has been sent!",
         description: "I'll get back to you as soon as possible.",
       });
       
       form.reset();
     } catch (error) {
       console.error('Error submitting message:', error);
-      toast.error("Failed to send message", {
+      toast({
+        title: "Failed to send message",
         description: "Please try again later.",
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -113,21 +116,21 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative bg-background">
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--tw-gradient-stops))] from-background via-background to-secondary/30" />
       </div>
       
-      <div className="section-container">
-        <h2 className="section-title">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           <TranslatedText>Contact Me</TranslatedText>
         </h2>
-        <p className="section-subtitle">
+        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
           <TranslatedText>Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.</TranslatedText>
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-          <div className="opacity-0 animate-on-scroll animate-slide-up-delay-2 group hover:-translate-y-1 transition-transform duration-300">
+          <div className="group hover:-translate-y-1 transition-transform duration-300">
             <h3 className="text-2xl font-display font-bold mb-6 relative">
               <TranslatedText>Get in Touch</TranslatedText>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-32 transition-all duration-500"></span>
@@ -201,7 +204,7 @@ const Contact = () => {
                   type="submit"
                   disabled={isSubmitting}
                   className={cn(
-                    "button-primary w-full flex items-center justify-center gap-2 hover:-translate-y-1 transition-transform",
+                    "w-full bg-primary text-primary-foreground flex items-center justify-center gap-2 px-6 py-3 rounded-md hover:-translate-y-1 transition-transform",
                     isSubmitting && "opacity-70 cursor-not-allowed"
                   )}
                 >
@@ -254,7 +257,7 @@ const Contact = () => {
             </div>
           </div>
           
-          <div className="opacity-0 animate-on-scroll animate-slide-up-delay-3 group hover:-translate-y-1 transition-transform duration-300">
+          <div className="group hover:-translate-y-1 transition-transform duration-300">
             <h3 className="text-2xl font-display font-bold mb-6 relative">
               <TranslatedText>Connect With Me</TranslatedText>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-44 transition-all duration-500"></span>
