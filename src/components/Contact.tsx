@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Twitter, Phone, Send } from 'lucide-react';
 import { toast } from 'sonner';
@@ -9,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useSupabaseClient } from '@/hooks/useSupabase';
+import { TranslatedText } from './TranslatedText';
 
 const socialLinks = [
   {
@@ -102,6 +104,14 @@ const Contact = () => {
     }
   };
 
+  // Helper function to scroll into view with smooth animation
+  const scrollIntoView = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="contact" className="py-24 relative">
       <div className="absolute inset-0 -z-10">
@@ -109,15 +119,17 @@ const Contact = () => {
       </div>
       
       <div className="section-container">
-        <h2 className="section-title">Contact Me</h2>
+        <h2 className="section-title">
+          <TranslatedText>Contact Me</TranslatedText>
+        </h2>
         <p className="section-subtitle">
-          Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.
+          <TranslatedText>Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.</TranslatedText>
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-          <div className="opacity-0 animate-slide-up-delay-2 group hover:-translate-y-1 transition-transform duration-300">
+          <div className="opacity-0 animate-on-scroll animate-slide-up-delay-2 group hover:-translate-y-1 transition-transform duration-300">
             <h3 className="text-2xl font-display font-bold mb-6 relative">
-              Get in Touch
+              <TranslatedText>Get in Touch</TranslatedText>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-32 transition-all duration-500"></span>
             </h3>
             
@@ -129,7 +141,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                        Your Name
+                        <TranslatedText>Your Name</TranslatedText>
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -149,7 +161,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                        Email Address
+                        <TranslatedText>Email Address</TranslatedText>
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -170,7 +182,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                        Message
+                        <TranslatedText>Message</TranslatedText>
                       </FormLabel>
                       <FormControl>
                         <Textarea
@@ -199,27 +211,57 @@ const Contact = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending...
+                      <TranslatedText>Sending...</TranslatedText>
                     </>
                   ) : (
                     <>
                       <Send className="h-4 w-4" />
-                      Send Message
+                      <TranslatedText>Send Message</TranslatedText>
                     </>
                   )}
                 </button>
               </form>
             </Form>
+            
+            <div className="mt-8 bg-muted/50 p-6 rounded-lg border border-border">
+              <h4 className="font-medium mb-2"><TranslatedText>Quick Navigation</TranslatedText></h4>
+              <div className="flex flex-wrap gap-2">
+                <button 
+                  onClick={() => scrollIntoView('home')}
+                  className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
+                >
+                  <TranslatedText>Home</TranslatedText>
+                </button>
+                <button 
+                  onClick={() => scrollIntoView('about')}
+                  className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
+                >
+                  <TranslatedText>About</TranslatedText>
+                </button>
+                <button 
+                  onClick={() => scrollIntoView('projects')}
+                  className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
+                >
+                  <TranslatedText>Projects</TranslatedText>
+                </button>
+                <button 
+                  onClick={() => scrollIntoView('experience')}
+                  className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
+                >
+                  <TranslatedText>Experience</TranslatedText>
+                </button>
+              </div>
+            </div>
           </div>
           
-          <div className="opacity-0 animate-slide-up-delay-3 group hover:-translate-y-1 transition-transform duration-300">
+          <div className="opacity-0 animate-on-scroll animate-slide-up-delay-3 group hover:-translate-y-1 transition-transform duration-300">
             <h3 className="text-2xl font-display font-bold mb-6 relative">
-              Connect With Me
+              <TranslatedText>Connect With Me</TranslatedText>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-44 transition-all duration-500"></span>
             </h3>
             
             <p className="text-muted-foreground mb-8">
-              Feel free to reach out through any of the platforms below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              <TranslatedText>Feel free to reach out through any of the platforms below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</TranslatedText>
             </p>
             
             <div className="flex flex-col space-y-4">
@@ -244,9 +286,16 @@ const Contact = () => {
             </div>
             
             <div className="mt-10 p-6 rounded-lg border border-border bg-secondary/30 transform hover:-translate-y-1 transition-transform duration-300 hover:shadow-md">
-              <h4 className="font-medium text-lg mb-2">Response Time</h4>
+              <h4 className="font-medium text-lg mb-2"><TranslatedText>Response Time</TranslatedText></h4>
               <p className="text-muted-foreground text-sm">
-                I typically respond to all messages within 24-48 hours. For urgent inquiries, email or phone is the best way to reach me.
+                <TranslatedText>I typically respond to all messages within 24-48 hours. For urgent inquiries, email or phone is the best way to reach me.</TranslatedText>
+              </p>
+            </div>
+            
+            <div className="mt-6 p-6 rounded-lg border border-border bg-secondary/30 transform hover:-translate-y-1 transition-transform duration-300 hover:shadow-md">
+              <h4 className="font-medium text-lg mb-2"><TranslatedText>Availability</TranslatedText></h4>
+              <p className="text-muted-foreground text-sm">
+                <TranslatedText>I'm currently open to freelance opportunities, full-time positions, and interesting collaborations. Let's discuss how we can work together!</TranslatedText>
               </p>
             </div>
           </div>

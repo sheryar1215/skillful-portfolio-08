@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import { CustomThemeProvider } from "@/hooks/useCustomTheme";
 import Index from "./pages/Index";
+import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 
@@ -24,6 +25,7 @@ const App = () => (
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/resume" element={<Resume />} />
                 <Route path="/admin" element={<Admin />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
