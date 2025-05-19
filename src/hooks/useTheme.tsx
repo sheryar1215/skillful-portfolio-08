@@ -1,5 +1,5 @@
 
-import { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 
 type Theme = 'dark' | 'light' | 'system';
 
@@ -27,6 +27,7 @@ export function ThemeProvider({
   storageKey = 'ui-theme',
   ...props
 }: ThemeProviderProps) {
+  // Make sure we're using React's useState
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   );
