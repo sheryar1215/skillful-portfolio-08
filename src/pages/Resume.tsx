@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,15 +9,13 @@ import { toast } from '@/hooks/use-toast';
 const Resume = () => {
   // Function to handle PDF download
   const handleDownloadPDF = () => {
-    // In a real implementation, you would generate or fetch a PDF
-    // For this demo, we'll simulate it with a toast message
-    
+    // Show loading toast
     toast({
       title: "Download started",
       description: "Your resume is being downloaded...",
     });
     
-    // Create a simple text file as a placeholder for the PDF
+    // Create resume content as text (would be PDF in a real implementation)
     const content = `
       Sheryar Khan - Resume
       
@@ -42,22 +39,22 @@ const Resume = () => {
     // Create a Blob with the content
     const blob = new Blob([content], { type: 'text/plain' });
     
-    // Create a link element to trigger the download
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'sheryar_khan_resume.txt'; // In a real app, this would be .pdf
+    // Create a download link
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'sheryar_khan_resume.txt'; // In a real app, this would be .pdf
     
-    // Append to the document, click it, and then remove it
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Trigger the download
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
     
-    // Show completion toast
+    // Show success toast after a short delay
     setTimeout(() => {
       toast({
         title: "Download complete",
         description: "Resume has been downloaded successfully.",
-        variant: "default",
+        variant: "success",
       });
     }, 1500);
   };
@@ -73,7 +70,11 @@ const Resume = () => {
             <p className="text-xl text-muted-foreground mb-4">Full Stack Developer</p>
             <p className="max-w-2xl text-muted-foreground">Computer Science graduate with expertise in web development, specializing in creating responsive and user-friendly applications using modern technologies.</p>
           </div>
-          <Button className="mt-6 md:mt-0 flex gap-2 items-center" size="lg" onClick={handleDownloadPDF}>
+          <Button 
+            className="mt-6 md:mt-0 flex gap-2 items-center" 
+            size="lg" 
+            onClick={handleDownloadPDF}
+          >
             <Download className="h-4 w-4" />
             <TranslatedText>Download PDF</TranslatedText>
           </Button>

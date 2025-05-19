@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -12,7 +11,7 @@ import ThemeCustomizer from '@/components/ThemeCustomizer';
 import { useLanguage } from '@/hooks/useLanguage';
 import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { ArrowUp, Home } from 'lucide-react';
+import { ArrowUp, Home as HomeIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -51,7 +50,39 @@ const Index = () => {
     updateOpenGraphTag('type', 'website');
     updateOpenGraphTag('url', window.location.href);
     
-    // Add animation classes to elements when they come into view
+    // Fix hash link navigation by manually handling it
+    const handleScrollToSection = (hash: string) => {
+      if (!hash) return;
+      
+      const targetId = hash.replace('#', '');
+      const element = document.getElementById(targetId);
+      
+      if (element) {
+        const navbarHeight = document.querySelector('nav')?.clientHeight || 0;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        
+        setTimeout(() => {
+          window.scrollTo({
+            top: elementPosition - navbarHeight - 20,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    };
+
+    // Handle initial hash if present on page load
+    if (window.location.hash) {
+      handleScrollToSection(window.location.hash);
+    }
+
+    // Add event listener for hash changes
+    const handleHashChange = () => {
+      handleScrollToSection(window.location.hash);
+    };
+    
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Setup animations for scrolling elements
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -64,7 +95,7 @@ const Index = () => {
       observer.observe(el);
     });
 
-    // Apply animation to mobile menu items with staggered delay
+    // Apply staggered animations to mobile menu items
     const applyMobileAnimations = () => {
       const menuItems = document.querySelectorAll('.animate-in');
       menuItems.forEach((item, index) => {
@@ -81,35 +112,8 @@ const Index = () => {
     applyMobileAnimations();
     window.addEventListener('resize', applyMobileAnimations);
 
-    // Fix hash link navigation by scrolling to the correct element
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-          setTimeout(() => {
-            const navbarHeight = document.querySelector('nav')?.clientHeight || 0;
-            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({
-              top: elementPosition - navbarHeight - 20,
-              behavior: 'smooth'
-            });
-          }, 100);
-        }
-      }
-    };
-
-    // Handle initial hash if present on page load
-    if (window.location.hash) {
-      handleHashChange();
-    }
-
-    // Add event listener for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-
     return () => {
       observer.disconnect();
-      window.removeEventListener('resize', applyMobileAnimations);
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
@@ -130,6 +134,14 @@ const Index = () => {
     }
   }, [currentLanguage]);
 
+  // Function to handle scrolling to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <main className="bg-background text-foreground min-h-screen transition-colors duration-300">
       <Navbar />
@@ -145,27 +157,27 @@ const Index = () => {
       {/* Home button for easy navigation */}
       <Button
         asChild
-        className="fixed top-20 right-4 p-2 rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+        className="fixed top-20 right-4 p-2 rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110 z-40"
         size="icon"
         variant="default"
         aria-label="Home"
       >
         <Link to="/">
-          <Home className="h-5 w-5" />
+          <HomeIcon className="h-5 w-5" />
         </Link>
       </Button>
       
       {/* Loading indicator for translations */}
       {isTranslating && (
-        <div className="fixed bottom-4 right-4 bg-primary text-primary-foreground py-2 px-4 rounded-md shadow-md animate-pulse">
+        <div className="fixed bottom-4 right-4 bg-primary text-primary-foreground py-2 px-4 rounded-md shadow-md animate-pulse z-40">
           Translating...
         </div>
       )}
       
       {/* Scroll to top button */}
       <Button 
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-4 left-4 p-2 rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+        onClick={scrollToTop}
+        className="fixed bottom-4 left-4 p-2 rounded-full shadow-lg hover:bg-primary/90 transition-transform hover:scale-110 z-40"
         variant="default"
         size="icon"
         aria-label="Scroll to top"

@@ -40,6 +40,25 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
     }
     return location.pathname === path;
   };
+
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    if (!sectionId.startsWith('#')) return;
+    
+    const element = document.getElementById(sectionId.substring(1));
+    if (element) {
+      const navbarHeight = document.querySelector('nav')?.clientHeight || 0;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navbarHeight - 20,
+        behavior: 'smooth'
+      });
+      
+      // Update URL without scroll
+      window.history.pushState({}, '', sectionId);
+      closeMobileMenu();
+    }
+  };
   
   const navLinks = [
     { href: "/", label: "Home", showOnHome: false, showAlways: true },
@@ -66,18 +85,33 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
           {navLinks
             .filter(link => (isHomePage && link.showOnHome) || (!isHomePage && link.showAlways) || link.showAlways)
             .map((link, index) => (
-              <Link 
-                key={index}
-                to={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  isActive(link.href) 
-                    ? 'text-primary' 
-                    : 'hover:text-primary'
-                }`}
-                onClick={closeMobileMenu}
-              >
-                <TranslatedText>{link.label}</TranslatedText>
-              </Link>
+              link.href.startsWith('#') ? (
+                <a 
+                  key={index}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive(link.href) 
+                      ? 'text-primary' 
+                      : 'hover:text-primary'
+                  }`}
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                >
+                  <TranslatedText>{link.label}</TranslatedText>
+                </a>
+              ) : (
+                <Link 
+                  key={index}
+                  to={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive(link.href) 
+                      ? 'text-primary' 
+                      : 'hover:text-primary'
+                  }`}
+                  onClick={closeMobileMenu}
+                >
+                  <TranslatedText>{link.label}</TranslatedText>
+                </Link>
+              )
             ))}
             
           <button 
@@ -119,19 +153,35 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
           {navLinks
             .filter(link => (isHomePage && link.showOnHome) || (!isHomePage && link.showAlways) || link.showAlways)
             .map((link, index) => (
-              <Link
-                key={index}
-                to={link.href}
-                className={`text-sm font-medium p-2 rounded-md transition-colors ${
-                  isActive(link.href) 
-                    ? 'bg-accent text-primary' 
-                    : 'hover:bg-accent/50'
-                }`}
-                onClick={closeMobileMenu}
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <TranslatedText>{link.label}</TranslatedText>
-              </Link>
+              link.href.startsWith('#') ? (
+                <a
+                  key={index}
+                  href={link.href}
+                  className={`text-sm font-medium p-2 rounded-md transition-colors ${
+                    isActive(link.href) 
+                      ? 'bg-accent text-primary' 
+                      : 'hover:bg-accent/50'
+                  }`}
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <TranslatedText>{link.label}</TranslatedText>
+                </a>
+              ) : (
+                <Link
+                  key={index}
+                  to={link.href}
+                  className={`text-sm font-medium p-2 rounded-md transition-colors ${
+                    isActive(link.href) 
+                      ? 'bg-accent text-primary' 
+                      : 'hover:bg-accent/50'
+                  }`}
+                  onClick={closeMobileMenu}
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <TranslatedText>{link.label}</TranslatedText>
+                </Link>
+              )
             ))}
         </div>
       )}
