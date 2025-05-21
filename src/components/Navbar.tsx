@@ -66,8 +66,8 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
     { href: "#projects", label: "Projects", showOnHome: true, showAlways: false },
     { href: "#experience", label: "Experience", showOnHome: true, showAlways: false },
     { href: "#contact", label: "Contact", showOnHome: true, showAlways: false },
-    { href: "/resume", label: "Resume", showOnHome: true, showAlways: true },
-    { href: "/admin", label: "Admin", showOnHome: true, showAlways: true }
+    // { href: "/resume", label: "Resume", showOnHome: true, showAlways: true },
+    // { href: "/admin", label: "Admin", showOnHome: true, showAlways: true }
   ];
   
   const isHomePage = location.pathname === '/';

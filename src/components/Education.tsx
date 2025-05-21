@@ -51,7 +51,7 @@ const certifications = [
     title: "Certificate of Appreciation",
     issuer: "Hamza Foundation",
     date: "2024",
-    description: "Recognition as a blood donor who saved 3 lives in the blood camp held by Hamza Foundation Peshawar",
+    description: "Recognition as a blood donor who saved 300+ lives in the blood camp held by Hamza Foundation Peshawar",
     image: "lovable-uploads/f4c8ddea-10f6-45d4-999d-61894634e16b.png"
   },
   {
@@ -71,8 +71,8 @@ const certifications = [
   {
     title: "Merit Certificate",
     issuer: "Edwards College Peshawar",
-    date: "2024",
-    description: "Awarded for Best Overall Performance",
+    date: "2020 - 2024",
+    description: "Awarded for Best Overall Performance In Bs Computer Science Department",
     image: "lovable-uploads/22ab7faa-e0bc-4483-9e6e-5227152f2e29.png"
   },
   {
@@ -86,14 +86,14 @@ const certifications = [
     title: "Merit Certificate",
     issuer: "Edwards College Peshawar",
     date: "2024",
-    description: "Awarded for performance in Hadith Quizlet Exhibition",
+    description: "Awarded for performance Play a Role as a setan In King Mackbet Stage Drama ",
     image: "lovable-uploads/161b6332-c5d8-4ffb-be66-97c1bd6669f0.png"
   },
   {
     title: "Proctorial Board Certificate",
     issuer: "Edwards College Peshawar",
     date: "2023/2024",
-    description: "For serving as a Proctor during the session 2023/2024",
+    description: "For serving as a Proctor during the session 2023/2024 ",
     image: "lovable-uploads/5018dbac-3201-4cb8-b816-beea47c29381.png"
   },
   {

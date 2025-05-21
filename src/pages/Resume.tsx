@@ -26,14 +26,15 @@ const Resume = () => {
       Phone: +92 316 1290066
       
       Education:
-      Bachelor of Computer Science - University of Peshawar (2017-2021)
+      Bachelor of Computer Science - University of Peshawar (2020-2024)
       
       Experience:
-      - Full Stack Developer Intern at 6PM Media (Dec 2024 - Mar 2025)
+      - Full Stack Developer and Ai Automation Engineer Intern at 6PM Media (Dec 2024 - Mar 2025)
       - Freelance Web Developer (Jan 2023 - Nov 2024)
       
       Skills:
-      JavaScript, PHP, React, Node.js, Express, MongoDB, HTML, CSS, Tailwind CSS
+      JavaScript, PHP, React, Node.js, Express, MongoDB, HTML, CSS, Tailwind CSS , Laravel ,Figma ,Mysql
+      ,N8N ,Lovable Ai ,Bootstrap , fullstack Devalopment
     `;
     
     // Create a Blob with the content
@@ -108,6 +109,23 @@ const Resume = () => {
                   </ul>
                 </div>
                 
+                  <div className="space-y-8">
+                <div className="relative border-l-2 border-muted pl-6 pb-6">
+                  <div className="absolute left-[-8px] top-0 h-4 w-4 rounded-full bg-primary"></div>
+                  <div className="flex flex-col md:flex-row md:justify-between mb-2">
+                    <h3 className="text-xl font-bold text-foreground">Full Stack Developer Intern</h3>
+                    <span className="text-muted-foreground">Dec 2024 - Mar 2025</span>
+                  </div>
+                  <p className="text-lg text-primary mb-2">6PM Media</p>
+                  <p className="text-muted-foreground mb-4">Worked as a full-stack developer focusing on MERN stack technologies to build scalable and responsive web applications.</p>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li className="text-foreground">Built scalable and responsive web applications using the MERN stack</li>
+                    <li className="text-foreground">Implemented SEO strategies for React applications, improving website rankings</li>
+                    <li className="text-foreground">Gained experience with n8n for workflow automation and Lovable AI for AI-driven applications</li>
+                    <li className="text-foreground">Worked with Supabase, APIs, and real-time features for enhanced application capabilities</li>
+                  </ul>
+                </div>
+                
                 <div className="relative border-l-2 border-muted pl-6 pb-6">
                   <div className="absolute left-[-8px] top-0 h-4 w-4 rounded-full bg-primary"></div>
                   <div className="flex flex-col md:flex-row md:justify-between mb-2">
@@ -124,6 +142,44 @@ const Resume = () => {
                   </ul>
                 </div>
               </div>
+
+  <div className="space-y-8">
+                <div className="relative border-l-2 border-muted pl-6 pb-6">
+                  <div className="absolute left-[-8px] top-0 h-4 w-4 rounded-full bg-primary"></div>
+                  <div className="flex flex-col md:flex-row md:justify-between mb-2">
+                    <h3 className="text-xl font-bold text-foreground">Full Stack Developer Intern</h3>
+                    <span className="text-muted-foreground">Dec 2024 - Mar 2025</span>
+                  </div>
+                  <p className="text-lg text-primary mb-2">6PM Media</p>
+                  <p className="text-muted-foreground mb-4">Worked as a full-stack developer focusing on MERN stack technologies to build scalable and responsive web applications.</p>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li className="text-foreground">Built scalable and responsive web applications using the MERN stack</li>
+                    <li className="text-foreground">Implemented SEO strategies for React applications, improving website rankings</li>
+                    <li className="text-foreground">Gained experience with n8n for workflow automation and Lovable AI for AI-driven applications</li>
+                    <li className="text-foreground">Worked with Supabase, APIs, and real-time features for enhanced application capabilities</li>
+                  </ul>
+                </div>
+                
+                <div className="relative border-l-2 border-muted pl-6 pb-6">
+                  <div className="absolute left-[-8px] top-0 h-4 w-4 rounded-full bg-primary"></div>
+                  <div className="flex flex-col md:flex-row md:justify-between mb-2">
+                    <h3 className="text-xl font-bold text-foreground">Tech Emulsion</h3>
+                    <span className="text-muted-foreground">MAY 2025 </span>
+                  </div>
+                  <p className="text-lg text-primary mb-2">Self-employed</p>
+                  <p className="text-muted-foreground mb-4">Developed custom websites and web applications for various clients across different industries.</p>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li className="text-foreground">Designed and developed over 10 custom websites for small businesses and individuals</li>
+                    <li className="text-foreground">Specialized in e-commerce solutions using modern JavaScript frameworks</li>
+                    <li className="text-foreground">Provided ongoing maintenance and support for client websites</li>
+                    <li className="text-foreground">Implemented SEO best practices to improve client website visibility</li>
+                  </ul>
+                </div>
+              </div>
+
+              </div>
+
+
             </section>
             
             {/* Projects Section */}
