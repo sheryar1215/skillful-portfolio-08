@@ -14,33 +14,27 @@ const experiences = [
       "Gained experience with n8n for workflow automation and Lovable AI for AI-driven applications",
       "Worked with Supabase, APIs, and real-time features for enhanced application capabilities"
     ]
-  }
+  },
 
-    {
-    company: "Tech Emulsion",
-    position: "Software Engineer Intern",
-    duration: "May 2025 - currently working",
-    description: "Worked as a full-stack developer focusing on MERN stack technologies to build scalable and responsive web applications. Implemented SEO strategies for React applications and learned workflow automation with n8n and AI integration with Lovable AI.",
-    achievements: [
-      "AI & Workflow Automation Projects"
-"As part of my role, I designed and implemented multiple AI-driven automation systems and workflows:"
+   {
+  "company": "Tech Emulsion",
+  "position": "Software Engineer Intern",
+  "duration": "May 2025 - Currently Working",
+  "description": "Working as a Software Engineer focusing on MERN stack technologies to build scalable and responsive web applications. Implementing SEO strategies for React applications and developing workflow automation with n8n and AI integration using Lovable AI.",
+  "achievements": [
+    "🔁 AI & Workflow Automation Projects",
+    "Designed and implemented multiple AI-driven automation systems and workflows:",
+    "• AI Lead Generation System: Built a multi-step AI workflow using  n8n that automates lead search from LinkedIn, extracts professional and educational data, and sends personalized outreach emails via the LeadBot.",
+    "• AI Inventory Sales Agent: Developed an intelligent inventory system in n8n that automatically manages stock data—adding, updating, and verifying inventory items.",
+    "• Automated Email Sender: Created a seamless email automation workflow that personalizes and dispatches emails using lead/contact information, improving communication efficiency.",
+    "⚛️ React.js & Frontend Projects",
+    "Contributed to React-based applications with intelligent feature integrations:",
+    "• CRS Chatbot Widget: Developed a customizable chatbot widget in React.js for Customer Relationship Software (CRS), enabling real-time support.",
+    "• CRS Template & Backend Support: Built a responsive and reusable React.js template and collaborated with backend teams for API integration.",
+    "• Gemini AI Chatbot: Integrated Gemini API with React + Vite to deliver a smart, contextual chatbot experience."
+  ]
+}
 
-"AI Lead Generation System: Built a multi-step AI workflow using Lovable AI and n8n that automates lead search from LinkedIn, extracts professional and educational data, and sends personalized outreach emails via the LeadBot."
-
-"AI Inventory Sales Agent: Developed an intelligent inventory system in n8n that automatically manages stock data—adding, updating, and verifying inventory items."
-
-"Automated Email Sender: Created a seamless email automation workflow that personalizes and dispatches emails using lead/contact information, improving communication efficiency."
-
-⚛️ "React.js & Frontend Projects"
-"Contributed to React-based applications with integration of intelligent features:
-"
-CRS Chatbot Widget: Developed a customizable chatbot widget in React.js for Customer Relationship Software (CRS), enabling real-time support.
-
-"CRS Template & Backend Support: Built a responsive and reusable React.js template and collaborated with backend teams for API integration.
-"
-Gemini AI Chatbot: Integrated Gemini API with React + Vite to deliver a smart, contextual chatbot experience."
-    ]
-  }
 
 
 ];
