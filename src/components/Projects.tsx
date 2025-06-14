@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { cn } from '@/lib/utils';
 import { TranslatedText } from "./TranslatedText";
@@ -6,10 +5,19 @@ import { ProjectCard } from "./ProjectCard";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { projects } from "./projectsData";
 import { ProjectModal } from "./ProjectModal";
+import { AnimatedProjectCard } from "./AnimatedProjectCard";
+import { CategoryTag } from "./CategoryTag";
 
 const Projects = () => {
   const [filter, setFilter] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
+  const filters: Array<{ key: string, label: string }> = [
+    { key: "all", label: "All" },
+    { key: "frontend", label: "Frontend" },
+    { key: "backend", label: "Backend" },
+    { key: "fullstack", label: "Fullstack" }
+  ];
 
   const filteredProjects =
     filter === "all"
@@ -34,28 +42,31 @@ const Projects = () => {
           </TranslatedText>
         </p>
 
-        <div className="flex justify-center mb-10 opacity-0 animate-slide-up-delay-2">
-          <div className="inline-flex bg-white dark:bg-slate-800 rounded-lg p-1 shadow-md">
-            {["all", "frontend", "backend", "fullstack"].map((category) => (
+        {/* FILTER BUTTONS */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex bg-white/90 dark:bg-slate-800/90 rounded-lg p-1 shadow-md border border-border transition">
+            {filters.map((cat, i) => (
               <button
-                key={category}
-                onClick={() => setFilter(category)}
+                key={cat.key}
+                onClick={() => setFilter(cat.key)}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-md transition-all",
-                  filter === category
-                    ? "bg-blue-600 text-white shadow-sm"
+                  "px-4 py-2 text-sm font-medium rounded-md transition-all duration-200",
+                  filter === cat.key
+                    ? "bg-blue-600 text-white shadow"
                     : "text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 )}
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
+                {cat.label}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 animate-slide-up-delay-3">
+        {/* GRID PROJECTS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <ProjectCard
+            <AnimatedProjectCard
               key={project.id}
               project={project}
               onDetails={() => setSelectedProject(project)}
