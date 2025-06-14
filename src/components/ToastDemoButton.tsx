@@ -1,7 +1,6 @@
 
 import React from "react";
 import { toast } from "@/hooks/use-toast";
-import { CircleCheck, CircleX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function ToastDemoButton() {
@@ -10,11 +9,7 @@ export function ToastDemoButton() {
       <Button
         onClick={() =>
           toast({
-            title: (
-              <span className="flex items-center gap-2 text-green-600">
-                <CircleCheck className="h-5 w-5" /> Success
-              </span>
-            ),
+            title: "Success",
             description: "Your action was successful!",
             duration: 2500,
           })
@@ -26,11 +21,7 @@ export function ToastDemoButton() {
       <Button
         onClick={() =>
           toast({
-            title: (
-              <span className="flex items-center gap-2 text-red-600">
-                <CircleX className="h-5 w-5" /> Error
-              </span>
-            ),
+            title: "Error",
             description: "Something went wrong.",
             variant: "destructive",
             duration: 3000,

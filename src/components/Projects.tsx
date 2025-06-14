@@ -1,8 +1,6 @@
+
 import React, { useState } from "react";
-import { BadgeInfo, ExternalLink, Github } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Badge } from "@/components/ui/badge";
 import { TranslatedText } from "./TranslatedText";
 import { ProjectCard } from "./ProjectCard";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
@@ -60,7 +58,7 @@ const Projects = () => {
             <ProjectCard
               key={project.id}
               project={project}
-              onClick={() => setSelectedProject(project)}
+              onDetails={() => setSelectedProject(project)}
             />
           ))}
         </div>
