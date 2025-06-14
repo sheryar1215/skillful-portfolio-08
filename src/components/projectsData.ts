@@ -1,5 +1,23 @@
 
-export const projects = [
+// Type definitions
+export type Category = "frontend" | "backend" | "fullstack";
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  technologies: string[];
+  demoLink: string;
+  repoLink: string;
+  category: Category;
+  challenges: string;
+  role: string;
+  duration: string;
+};
+
+// Strictly typed projects array
+export const projects: Project[] = [
   {
     id: 1,
     title: "Patient Management System",
