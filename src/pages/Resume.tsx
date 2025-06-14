@@ -55,7 +55,7 @@ const Resume = () => {
       toast({
         title: "Download complete",
         description: "Resume has been downloaded successfully.",
-        variant: "success",
+        variant: "default",
       });
     }, 1500);
   };
