@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Github, ExternalLink, BadgeInfo } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -104,6 +103,62 @@ const projects = [
     challenges: "Balancing aesthetic appeal with optimal page load speed required implementing advanced lazy loading and progressive image techniques.",
     role: "UI/UX Designer & Frontend Developer",
     duration: "1.5 months"
+  },
+  {
+    id: 8,
+    title: "ChatBOT (Google Gemini + React.js)",
+    description: "An AI chatbot built with React.js and Google Gemini API for natural conversation and task assistance.",
+    longDescription: "Developed an AI-powered chatbot leveraging Google Gemini API and React.js. The bot is capable of natural conversation, contextual query handling, and assists users with various tasks. Integrated UI employs responsive design for seamless desktop and mobile experience.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["React.js", "Google Gemini API", "JavaScript", "CSS"],
+    demoLink: "https://chatbot-gemini.example.com",
+    repoLink: "https://github.com/sheryar1215/chatbot-gemini",
+    category: "frontend",
+    challenges: "Enabling contextual understanding with smooth real-time feedback while keeping latency low during API calls.",
+    role: "Frontend Developer",
+    duration: "2 months"
+  },
+  {
+    id: 9,
+    title: "MiniBlogApp (MERN + Cloudinary)",
+    description: "A scalable blogging platform using the MERN stack and Cloudinary, featuring media uploads and rich content editing.",
+    longDescription: "Developed a full-featured blogging platform using MERN stack. Integrated Cloudinary for media uploads, rich content editing, and seamless authoring workflow. Included support for authentication, media management, and dynamic rendering of posts.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["MongoDB", "Express", "React.js", "Node.js", "Cloudinary"],
+    demoLink: "https://miniblogapp.example.com",
+    repoLink: "https://github.com/sheryar1215/miniblogapp",
+    category: "fullstack",
+    challenges: "Implementing secure media uploads and efficient retrieval for fast page load while preventing untrusted file abuse.",
+    role: "Full Stack Developer",
+    duration: "3 months"
+  },
+  {
+    id: 10,
+    title: "Professional Automatic Email Sender (n8n)",
+    description: "Automates professional email workflows using n8n, integrating with various platforms for scheduled and event-based messaging.",
+    longDescription: "Created an automated email sender using n8n, allowing integration of scheduled, triggered, and conditional professional emails. Supports dynamic templates, attachments, multi-service integration, and reporting for sent emails.",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["n8n", "JavaScript", "Email APIs"],
+    demoLink: "https://email-n8n.example.com",
+    repoLink: "https://github.com/sheryar1215/email-n8n",
+    category: "backend",
+    challenges: "Complex logic for scheduling, error handling for third-party APIs and ensuring reliable delivery for bulk emails.",
+    role: "Backend Automation Developer",
+    duration: "1.5 months"
+  },
+  {
+    id: 11,
+    title: "Inventory Management (n8n)",
+    description: "A workflow automated inventory management solution built with n8n for real-time stock tracking and reporting.",
+    longDescription: "Implemented an inventory management workflow using n8n for real-time stock tracking, low-inventory alerts, and sales reporting. Features dashboard integration, multi-channel syncing, and automation for inventory adjustments.",
+    image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b8e91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    technologies: ["n8n", "Automation", "JavaScript"],
+    demoLink: "https://inventory-n8n.example.com",
+    repoLink: "https://github.com/sheryar1215/inventory-n8n",
+    category: "backend",
+    challenges: "Real-time data synchronization and handling race conditions while updating inventory across multiple sales channels.",
+    role: "Backend Automation Developer",
+    duration: "1 month"
   }
 ];
 
