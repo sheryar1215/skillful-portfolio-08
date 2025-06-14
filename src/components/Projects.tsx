@@ -4,6 +4,8 @@ import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { TranslatedText } from './TranslatedText';
+import { ProjectCard } from './ProjectCard';
+import { useAnimateOnScroll } from '@/hooks/useAnimateOnScroll';
 
 const projects = [
   {
@@ -170,13 +172,20 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === filter);
 
+  // Animate section entrance
+  const sectionRef = useAnimateOnScroll<HTMLElement>("animate-fade-in-scale", 0);
+
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="py-24 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800"
+    >
       <div className="section-container">
-        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-slate-900 dark:text-white opacity-0 animate-slide-up">
+        <h2 className="section-title gradient-text">
           <TranslatedText>Projects</TranslatedText>
         </h2>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 opacity-0 animate-slide-up-delay-1">
+        <p className="section-subtitle">
           <TranslatedText>A selection of my recent work, showcasing my skills and experience in building web applications.</TranslatedText>
         </p>
         
