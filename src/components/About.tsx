@@ -55,11 +55,9 @@ const strengths = [
 ];
 
 const interests = [
-  "AI and machine learning applications in web development",
-  "UX/UI design principles and accessibility",
-  "Open source contribution",
-  "Mobile app development",
-  "Learning new programming languages"
+  "Coding",
+  "Reading books",
+  "Learn new things"
 ];
 
 const languages = [
@@ -107,6 +105,25 @@ const About = () => {
                   Based in Peshawar, Khyber Pakhtunkhwa, Pakistan, I'm passionate about using technology to solve real-world problems and deliver exceptional digital experiences to users. I am constantly learning and expanding my skills to stay current with the latest industry trends and technologies.
                 </TranslatedText>
               </p>
+              {/* Featured Portfolio Projects section */}
+              <div className="mt-8">
+                <h3 className="text-xl font-display font-bold mb-4 text-slate-900 dark:text-white flex items-center gap-2">
+                  <Code className="h-5 w-5 text-blue-500" />
+                  <TranslatedText>Featured Projects</TranslatedText>
+                </h3>
+                <div className="space-y-3">
+                  <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
+                    <p className="font-semibold text-slate-900 dark:text-white mb-1">Patient Management System</p>
+                    <p className="text-sm text-muted-foreground">A full-featured patient management app for healthcare providers. Built with PHP & Bootstrap.</p>
+                    <a href="https://github.com/sheryar1215/pms_project" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
+                  </div>
+                  <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
+                    <p className="font-semibold text-slate-900 dark:text-white mb-1">E-Commerce Platform</p>
+                    <p className="text-sm text-muted-foreground">A responsive e-commerce solution with shopping cart and payments. Built with React, Node.js, MongoDB.</p>
+                    <a href="https://github.com/sheryar1215/e-commerce" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
+                  </div>
+                </div>
+              </div>
               {/* Strengths */}
               <div className="mt-8">
                 <h3 className="text-xl font-display font-bold mb-4 text-slate-900 dark:text-white">
