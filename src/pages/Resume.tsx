@@ -8,18 +8,15 @@ import { toast } from '@/hooks/use-toast';
 
 const Resume = () => {
   // Function to handle image download
-  const handleDownloadResumeImage = async () => {
+  const handleDownloadResumeImage = () => {
     toast({
       title: "Download started",
       description: "Your resume is being downloaded...",
     });
 
-    // Fetch the image and create a blob for download
     const imageUrl = "/lovable-uploads/9befbbdc-219b-4827-8106-69beedb4e474.png";
-    const response = await fetch(imageUrl);
-    const blob = await response.blob();
     const downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.href = imageUrl;
     downloadLink.download = 'resume.png';
     document.body.appendChild(downloadLink);
     downloadLink.click();
