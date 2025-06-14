@@ -112,15 +112,41 @@ const About = () => {
                   <TranslatedText>Featured Projects</TranslatedText>
                 </h3>
                 <div className="space-y-3">
+                  {/* Patient Management System */}
                   <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
                     <p className="font-semibold text-slate-900 dark:text-white mb-1">Patient Management System</p>
                     <p className="text-sm text-muted-foreground">A full-featured patient management app for healthcare providers. Built with PHP & Bootstrap.</p>
                     <a href="https://github.com/sheryar1215/pms_project" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
                   </div>
+                  {/* E-Commerce Platform */}
                   <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
                     <p className="font-semibold text-slate-900 dark:text-white mb-1">E-Commerce Platform</p>
                     <p className="text-sm text-muted-foreground">A responsive e-commerce solution with shopping cart and payments. Built with React, Node.js, MongoDB.</p>
                     <a href="https://github.com/sheryar1215/e-commerce" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
+                  </div>
+                  {/* ChatBOT using Google Gemini & React.js */}
+                  <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
+                    <p className="font-semibold text-slate-900 dark:text-white mb-1">ChatBOT (Google Gemini + React.js)</p>
+                    <p className="text-sm text-muted-foreground">An AI chatbot built with React.js and Google Gemini API for natural conversation and task assistance.</p>
+                    <a href="https://github.com/sheryar1215/chatbot-gemini" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
+                  </div>
+                  {/* MiniBlogApp using MERN & Cloudinary */}
+                  <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
+                    <p className="font-semibold text-slate-900 dark:text-white mb-1">MiniBlogApp (MERN + Cloudinary)</p>
+                    <p className="text-sm text-muted-foreground">A scalable blogging platform using the MERN stack and Cloudinary, featuring media uploads and rich content editing.</p>
+                    <a href="https://github.com/sheryar1215/miniblogapp" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
+                  </div>
+                  {/* Professional Automatic Email Sender using n8n */}
+                  <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
+                    <p className="font-semibold text-slate-900 dark:text-white mb-1">Professional Automatic Email Sender (n8n)</p>
+                    <p className="text-sm text-muted-foreground">Automates professional email workflows using n8n, integrating with various platforms for scheduled and event-based messaging.</p>
+                    <a href="https://github.com/sheryar1215/email-n8n" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
+                  </div>
+                  {/* Inventory Management using n8n */}
+                  <div className="rounded-lg border bg-white/80 dark:bg-slate-800/80 p-4 hover:shadow transition">
+                    <p className="font-semibold text-slate-900 dark:text-white mb-1">Inventory Management (n8n)</p>
+                    <p className="text-sm text-muted-foreground">A workflow automated inventory management solution built with n8n for real-time stock tracking and reporting.</p>
+                    <a href="https://github.com/sheryar1215/inventory-n8n" target="_blank" rel="noopener noreferrer" className="block w-fit mt-1 text-blue-600 dark:text-blue-400 hover:underline text-sm">View on GitHub</a>
                   </div>
                 </div>
               </div>
