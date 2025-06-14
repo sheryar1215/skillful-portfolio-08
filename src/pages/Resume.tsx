@@ -7,50 +7,24 @@ import { TranslatedText } from '@/components/TranslatedText';
 import { toast } from '@/hooks/use-toast';
 
 const Resume = () => {
-  // Function to handle PDF download
-  const handleDownloadPDF = () => {
-    // Show loading toast
+  // Function to handle image download
+  const handleDownloadResumeImage = async () => {
     toast({
       title: "Download started",
       description: "Your resume is being downloaded...",
     });
-    
-    // Create resume content as text (would be PDF in a real implementation)
-    const content = `
-      Sheryar Khan - Resume
-      
-      Full Stack Developer
-      
-      Contact:
-      Email: 1215sheryarkhan@gmail.com
-      Phone: +92 316 1290066
-      
-      Education:
-      Bachelor of Computer Science - University of Peshawar (2020-2024)
-      
-      Experience:
-      - Full Stack Developer and Ai Automation Engineer Intern at 6PM Media (Dec 2024 - Mar 2025)
-      - Freelance Web Developer (Jan 2023 - Nov 2024)
-      
-      Skills:
-      JavaScript, PHP, React, Node.js, Express, MongoDB, HTML, CSS, Tailwind CSS , Laravel ,Figma ,Mysql
-      ,N8N ,Lovable Ai ,Bootstrap , fullstack Devalopment
-    `;
-    
-    // Create a Blob with the content
-    const blob = new Blob([content], { type: 'text/plain' });
-    
-    // Create a download link
+
+    // Fetch the image and create a blob for download
+    const imageUrl = "/lovable-uploads/9befbbdc-219b-4827-8106-69beedb4e474.png";
+    const response = await fetch(imageUrl);
+    const blob = await response.blob();
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = 'sheryar_khan_resume.txt'; // In a real app, this would be .pdf
-    
-    // Trigger the download
+    downloadLink.download = 'resume.png';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
-    
-    // Show success toast after a short delay
+
     setTimeout(() => {
       toast({
         title: "Download complete",
@@ -63,18 +37,19 @@ const Resume = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
       <main className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row justify-between items-start mb-8">
           <div>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">Sheryar Khan</h1>
             <p className="text-xl text-muted-foreground mb-4">Full Stack Developer</p>
-            <p className="max-w-2xl text-muted-foreground">Computer Science graduate with expertise in web development, specializing in creating responsive and user-friendly applications using modern technologies.</p>
+            <p className="max-w-2xl text-muted-foreground">
+              Computer Science graduate with expertise in web development, specializing in creating responsive and user-friendly applications using modern technologies.
+            </p>
           </div>
           <Button 
             className="mt-6 md:mt-0 flex gap-2 items-center" 
             size="lg" 
-            onClick={handleDownloadPDF}
+            onClick={handleDownloadResumeImage}
           >
             <Download className="h-4 w-4" />
             <TranslatedText>Download PDF</TranslatedText>
@@ -347,8 +322,15 @@ const Resume = () => {
             </section>
           </div>
         </div>
+        {/* Optionally, show a preview of the downloadable resume */}
+        <div className="my-10 flex justify-center">
+          <img
+            src="/lovable-uploads/9befbbdc-219b-4827-8106-69beedb4e474.png"
+            alt="Sheryar Khan Resume"
+            className="max-w-full w-[350px] rounded-xl border shadow-lg"
+          />
+        </div>
       </main>
-      
       <Footer />
     </div>
   );
