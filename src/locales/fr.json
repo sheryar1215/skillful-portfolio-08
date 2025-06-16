@@ -1,0 +1,80 @@
+
+{
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "resume": "CV",
+    "admin": "Admin"
+  },
+  "hero": {
+    "greeting": "Salut, je suis",
+    "title": "Développeur Full Stack",
+    "subtitle": "Créer des applications web modernes avec passion et précision",
+    "cta": "Me Contacter",
+    "resume": "Voir le CV"
+  },
+  "about": {
+    "title": "À Propos de Moi",
+    "description": "Je suis un développeur Full Stack passionné avec une expertise dans les technologies web modernes. J'aime créer des applications efficaces, évolutives et conviviales.",
+    "skills": "Compétences et Technologies"
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Une vitrine de mon travail récent et de mon expertise technique",
+    "filter": {
+      "all": "Tous",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "fullstack": "Full Stack"
+    },
+    "viewDemo": "Voir la Démo",
+    "viewCode": "Voir le Code",
+    "overview": "Aperçu",
+    "technologies": "Technologies Utilisées",
+    "challenges": "Défis et Solutions",
+    "role": "Mon Rôle",
+    "duration": "Durée"
+  },
+  "experience": {
+    "title": "Expérience",
+    "subtitle": "Mon parcours professionnel et mes contributions clés dans le domaine du développement web."
+  },
+  "education": {
+    "title": "Éducation",
+    "subtitle": "Mon parcours académique et mon apprentissage continu"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Travaillons ensemble sur votre prochain projet",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer le Message",
+    "sending": "Envoi en cours...",
+    "success": "Message envoyé avec succès!",
+    "error": "Échec de l'envoi du message. Veuillez réessayer."
+  },
+  "footer": {
+    "copyright": "© 2025 Sheryar Khan. Tous droits réservés.",
+    "built": "Construit avec React, TypeScript et Tailwind CSS"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Quelque chose s'est mal passé",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "view": "Voir",
+    "download": "Télécharger"
+  }
+}

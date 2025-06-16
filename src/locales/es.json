@@ -1,0 +1,80 @@
+
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto",
+    "resume": "Currículum",
+    "admin": "Admin"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "title": "Desarrollador Full Stack",
+    "subtitle": "Construyendo aplicaciones web modernas con pasión y precisión",
+    "cta": "Póngase en Contacto",
+    "resume": "Ver Currículum"
+  },
+  "about": {
+    "title": "Acerca de Mí",
+    "description": "Soy un desarrollador Full Stack apasionado con experiencia en tecnologías web modernas. Me encanta crear aplicaciones eficientes, escalables y fáciles de usar.",
+    "skills": "Habilidades y Tecnologías"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Una muestra de mi trabajo reciente y experiencia técnica",
+    "filter": {
+      "all": "Todos",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "fullstack": "Full Stack"
+    },
+    "viewDemo": "Ver Demo",
+    "viewCode": "Ver Código",
+    "overview": "Resumen",
+    "technologies": "Tecnologías Utilizadas",
+    "challenges": "Desafíos y Soluciones",
+    "role": "Mi Rol",
+    "duration": "Duración"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Mi trayectoria profesional y contribuciones clave en el campo del desarrollo web."
+  },
+  "education": {
+    "title": "Educación",
+    "subtitle": "Mi formación académica y viaje de aprendizaje continuo"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Trabajemos juntos en su próximo proyecto",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Error al enviar el mensaje. Por favor, inténtelo de nuevo."
+  },
+  "footer": {
+    "copyright": "© 2025 Sheryar Khan. Todos los derechos reservados.",
+    "built": "Construido con React, TypeScript y Tailwind CSS"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "download": "Descargar"
+  }
+}

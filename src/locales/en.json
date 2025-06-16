@@ -1,0 +1,80 @@
+
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "resume": "Resume",
+    "admin": "Admin"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "title": "Full Stack Developer",
+    "subtitle": "Building modern web applications with passion and precision",
+    "cta": "Get In Touch",
+    "resume": "View Resume"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a passionate Full Stack Developer with expertise in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
+    "skills": "Skills & Technologies"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A showcase of my recent work and technical expertise",
+    "filter": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "fullstack": "Full Stack"
+    },
+    "viewDemo": "View Demo",
+    "viewCode": "View Code",
+    "overview": "Overview",
+    "technologies": "Technologies Used",
+    "challenges": "Challenges & Solutions",
+    "role": "My Role",
+    "duration": "Duration"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey and key contributions in the field of web development."
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic background and continuous learning journey"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's work together on your next project",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again."
+  },
+  "footer": {
+    "copyright": "© 2025 Sheryar Khan. All rights reserved.",
+    "built": "Built with React, TypeScript, and Tailwind CSS"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download"
+  }
+}

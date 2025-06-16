@@ -6,20 +6,34 @@ interface TranslatedTextProps {
   children: string;
   as?: keyof JSX.IntrinsicElements;
   className?: string;
+  // New prop for using key-based translations (recommended)
+  tKey?: string;
+  // Fallback text when using tKey
+  fallback?: string;
 }
 
 export const TranslatedText: React.FC<TranslatedTextProps> = ({ 
   children, 
   as: Component = 'span',
-  className 
+  className,
+  tKey,
+  fallback
 }) => {
-  const { translate, currentLanguage } = useLanguage();
+  const { translate, currentLanguage, t } = useLanguage();
   const [translatedContent, setTranslatedContent] = useState(children);
   
   useEffect(() => {
     let isMounted = true;
     
     const performTranslation = async () => {
+      // If using key-based translation (recommended approach)
+      if (tKey) {
+        const keyTranslation = t(tKey, fallback || children);
+        setTranslatedContent(keyTranslation);
+        return;
+      }
+      
+      // Legacy text-based translation for backward compatibility
       if (currentLanguage === 'en') {
         setTranslatedContent(children);
         return;
@@ -34,7 +48,7 @@ export const TranslatedText: React.FC<TranslatedTextProps> = ({
     performTranslation();
     
     return () => { isMounted = false; };
-  }, [children, currentLanguage, translate]);
+  }, [children, currentLanguage, translate, t, tKey, fallback]);
   
   return <Component className={className}>{translatedContent}</Component>;
 };

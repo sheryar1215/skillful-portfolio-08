@@ -1,0 +1,80 @@
+
+{
+  "navbar": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "projects": "Projekte",
+    "experience": "Erfahrung",
+    "contact": "Kontakt",
+    "resume": "Lebenslauf",
+    "admin": "Admin"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "title": "Full Stack Entwickler",
+    "subtitle": "Moderne Webanwendungen mit Leidenschaft und Präzision entwickeln",
+    "cta": "Kontakt aufnehmen",
+    "resume": "Lebenslauf ansehen"
+  },
+  "about": {
+    "title": "Über Mich",
+    "description": "Ich bin ein leidenschaftlicher Full Stack Entwickler mit Expertise in modernen Web-Technologien. Ich liebe es, effiziente, skalierbare und benutzerfreundliche Anwendungen zu erstellen.",
+    "skills": "Fähigkeiten und Technologien"
+  },
+  "projects": {
+    "title": "Projekte",
+    "subtitle": "Eine Präsentation meiner neuesten Arbeiten und technischen Expertise",
+    "filter": {
+      "all": "Alle",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "fullstack": "Full Stack"
+    },
+    "viewDemo": "Demo ansehen",
+    "viewCode": "Code ansehen",
+    "overview": "Überblick",
+    "technologies": "Verwendete Technologien",
+    "challenges": "Herausforderungen und Lösungen",
+    "role": "Meine Rolle",
+    "duration": "Dauer"
+  },
+  "experience": {
+    "title": "Erfahrung",
+    "subtitle": "Mein beruflicher Werdegang und wichtige Beiträge im Bereich der Webentwicklung."
+  },
+  "education": {
+    "title": "Bildung",
+    "subtitle": "Mein akademischer Hintergrund und kontinuierliche Lernreise"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Lassen Sie uns gemeinsam an Ihrem nächsten Projekt arbeiten",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet...",
+    "success": "Nachricht erfolgreich gesendet!",
+    "error": "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut."
+  },
+  "footer": {
+    "copyright": "© 2025 Sheryar Khan. Alle Rechte vorbehalten.",
+    "built": "Erstellt mit React, TypeScript und Tailwind CSS"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Etwas ist schief gelaufen",
+    "retry": "Erneut versuchen",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "view": "Ansehen",
+    "download": "Herunterladen"
+  }
+}
