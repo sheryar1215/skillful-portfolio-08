@@ -1,10 +1,11 @@
 
 import React from 'react';
-import { TranslatedText } from '@/components/TranslatedText';
+import { useLanguage } from '@/hooks/useLanguage';
 import SocialLinks from '@/components/SocialLinks';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -13,49 +14,49 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-bold mb-4 text-white">
-              <TranslatedText>Sheryar Khan</TranslatedText>
+              Sheryar Khan
             </h3>
             <p className="text-slate-300 mb-4">
-              <TranslatedText>Computer Science Graduate & Full-Stack Developer</TranslatedText>
+              {t('hero.title')}
             </p>
             <SocialLinks />
           </div>
           <div>
             <h3 className="text-lg font-bold mb-4 text-white">
-              <TranslatedText>Contact</TranslatedText>
+              {t('contact.title')}
             </h3>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-4 h-4" />
-                <TranslatedText>Email: 1215sheryarkhan@gmail.com</TranslatedText>
+                Email: 1215sheryarkhan@gmail.com
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <Phone className="w-4 h-4" />
-                <TranslatedText>Phone: +923161290066</TranslatedText>
+                Phone: +923161290066
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <MapPin className="w-4 h-4" />
-                <TranslatedText>Location: Peshawar, Pakistan</TranslatedText>
+                Location: Peshawar, Pakistan
               </div>
             </div>
           </div>
           <div>
             <h3 className="text-lg font-bold mb-4 text-white">
-              <TranslatedText>Links</TranslatedText>
+              Links
             </h3>
             <a href="#about" className="block text-slate-300 hover:text-white transition-colors mb-1">
-              <TranslatedText>About</TranslatedText>
+              {t('navbar.about')}
             </a>
             <a href="#projects" className="block text-slate-300 hover:text-white transition-colors mb-1">
-              <TranslatedText>Projects</TranslatedText>
+              {t('navbar.projects')}
             </a>
             <a href="#experience" className="block text-slate-300 hover:text-white transition-colors mb-1">
-              <TranslatedText>Experience</TranslatedText>
+              {t('navbar.experience')}
             </a>
           </div>
         </div>
         <div className="border-t border-slate-700 mt-8 pt-6 text-center text-slate-400">
-          <TranslatedText>{`© ${currentYear.toString()} Sheryar Khan. All rights reserved.`}</TranslatedText>
+          {t('footer.copyright')}
         </div>
       </div>
     </footer>

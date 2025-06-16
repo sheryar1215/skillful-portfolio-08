@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
-import { TranslatedText } from './TranslatedText';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/hooks/useTheme';
 
@@ -14,6 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const location = useLocation();
 
   const toggleMobileMenu = () => {
@@ -61,13 +62,11 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
   };
   
   const navLinks = [
-    { href: "/", label: "Home", showOnHome: false, showAlways: true },
-    { href: "#about", label: "About", showOnHome: true, showAlways: false },
-    { href: "#projects", label: "Projects", showOnHome: true, showAlways: false },
-    { href: "#experience", label: "Experience", showOnHome: true, showAlways: false },
-    { href: "#contact", label: "Contact", showOnHome: true, showAlways: false },
-    // { href: "/resume", label: "Resume", showOnHome: true, showAlways: true },
-    // { href: "/admin", label: "Admin", showOnHome: true, showAlways: true }
+    { href: "/", label: t('navbar.home'), showOnHome: false, showAlways: true },
+    { href: "#about", label: t('navbar.about'), showOnHome: true, showAlways: false },
+    { href: "#projects", label: t('navbar.projects'), showOnHome: true, showAlways: false },
+    { href: "#experience", label: t('navbar.experience'), showOnHome: true, showAlways: false },
+    { href: "#contact", label: t('navbar.contact'), showOnHome: true, showAlways: false },
   ];
   
   const isHomePage = location.pathname === '/';
@@ -96,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
                   }`}
                   onClick={(e) => handleScrollToSection(e, link.href)}
                 >
-                  <TranslatedText>{link.label}</TranslatedText>
+                  {link.label}
                 </a>
               ) : (
                 <Link 
@@ -109,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
                   }`}
                   onClick={closeMobileMenu}
                 >
-                  <TranslatedText>{link.label}</TranslatedText>
+                  {link.label}
                 </Link>
               )
             ))}
@@ -165,7 +164,7 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
                   onClick={(e) => handleScrollToSection(e, link.href)}
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <TranslatedText>{link.label}</TranslatedText>
+                  {link.label}
                 </a>
               ) : (
                 <Link
@@ -179,7 +178,7 @@ const Navbar: React.FC<NavbarProps> = ({ name = "Sheryar Khan" }) => {
                   onClick={closeMobileMenu}
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <TranslatedText>{link.label}</TranslatedText>
+                  {link.label}
                 </Link>
               )
             ))}

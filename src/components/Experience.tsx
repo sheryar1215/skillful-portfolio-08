@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Briefcase } from 'lucide-react';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const experiences = [
   {
@@ -15,31 +16,29 @@ const experiences = [
       "Worked with Supabase, APIs, and real-time features for enhanced application capabilities"
     ]
   },
-
-   {
-  "company": "Tech Emulsion",
-  "position": "Software Engineer Intern",
-  "duration": "May 2025 - Currently Working",
-  "description": "Working as a Software Engineer focusing on MERN stack technologies to build scalable and responsive web applications. Implementing SEO strategies for React applications and developing workflow automation with n8n and AI integration using Lovable AI.",
-  "achievements": [
-    "🔁 AI & Workflow Automation Projects",
-    "Designed and implemented multiple AI-driven automation systems and workflows:",
-    "• AI Lead Generation System: Built a multi-step AI workflow using  n8n that automates lead search from LinkedIn, extracts professional and educational data, and sends personalized outreach emails via the LeadBot.",
-    "• AI Inventory Sales Agent: Developed an intelligent inventory system in n8n that automatically manages stock data—adding, updating, and verifying inventory items.",
-    "• Automated Email Sender: Created a seamless email automation workflow that personalizes and dispatches emails using lead/contact information, improving communication efficiency.",
-    "⚛️ React.js & Frontend Projects",
-    "Contributed to React-based applications with intelligent feature integrations:",
-    "• CRS Chatbot Widget: Developed a customizable chatbot widget in React.js for Customer Relationship Software (CRS), enabling real-time support.",
-    "• CRS Template & Backend Support: Built a responsive and reusable React.js template and collaborated with backend teams for API integration.",
-    "• Gemini AI Chatbot: Integrated Gemini API with React + Vite to deliver a smart, contextual chatbot experience."
-  ]
-}
-
-
-
+  {
+    "company": "Tech Emulsion",
+    "position": "Software Engineer Intern",
+    "duration": "May 2025 - Currently Working",
+    "description": "Working as a Software Engineer focusing on MERN stack technologies to build scalable and responsive web applications. Implementing SEO strategies for React applications and developing workflow automation with n8n and AI integration using Lovable AI.",
+    "achievements": [
+      "🔁 AI & Workflow Automation Projects",
+      "Designed and implemented multiple AI-driven automation systems and workflows:",
+      "• AI Lead Generation System: Built a multi-step AI workflow using  n8n that automates lead search from LinkedIn, extracts professional and educational data, and sends personalized outreach emails via the LeadBot.",
+      "• AI Inventory Sales Agent: Developed an intelligent inventory system in n8n that automatically manages stock data—adding, updating, and verifying inventory items.",
+      "• Automated Email Sender: Created a seamless email automation workflow that personalizes and dispatches emails using lead/contact information, improving communication efficiency.",
+      "⚛️ React.js & Frontend Projects",
+      "Contributed to React-based applications with intelligent feature integrations:",
+      "• CRS Chatbot Widget: Developed a customizable chatbot widget in React.js for Customer Relationship Software (CRS), enabling real-time support.",
+      "• CRS Template & Backend Support: Built a responsive and reusable React.js template and collaborated with backend teams for API integration.",
+      "• Gemini AI Chatbot: Integrated Gemini API with React + Vite to deliver a smart, contextual chatbot experience."
+    ]
+  }
 ];
 
 const Experience = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="experience" className="py-24 relative bg-gradient-to-b from-white to-slate-50 dark:from-slate-950 dark:to-slate-900">
       <div className="absolute inset-0 -z-10">
@@ -47,9 +46,11 @@ const Experience = () => {
       </div>
       
       <div className="section-container">
-        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-slate-900 dark:text-white opacity-0 animate-slide-up">Experience</h2>
+        <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-slate-900 dark:text-white opacity-0 animate-slide-up">
+          {t('experience.title')}
+        </h2>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 opacity-0 animate-slide-up-delay-1">
-          My professional journey and key contributions in the field of web development.
+          {t('experience.subtitle')}
         </p>
         
         <div className="max-w-3xl mx-auto mt-16 opacity-0 animate-slide-up-delay-2">

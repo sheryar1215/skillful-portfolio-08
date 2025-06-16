@@ -2,13 +2,15 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { TranslatedText } from './TranslatedText';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface HeroProps {
   profileImage?: string;
 }
 
 const Hero: React.FC<HeroProps> = ({ profileImage }) => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="home"
@@ -28,29 +30,26 @@ const Hero: React.FC<HeroProps> = ({ profileImage }) => {
       <div className="container mx-auto px-4 py-16 flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
         <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left animate-slide-up">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-white bg-gradient-to-r from-blue-400 via-blue-200 to-violet-400 bg-clip-text text-transparent">
-            Sheryar Khan
+            {t('hero.greeting')} Sheryar Khan
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-white/80 animate-fade-in">
-            <TranslatedText>Computer Science Graduate & Full-Stack Developer</TranslatedText>
+            {t('hero.title')}
           </h2>
           <p className="text-lg text-white/70 max-w-2xl mx-auto lg:mx-0 animate-fade-in">
-            <TranslatedText>
-              I build exceptional digital experiences with modern technologies, focusing on creating responsive, 
-              user-friendly web applications that deliver real value.
-            </TranslatedText>
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-in">
             <a 
               href="#contact" 
               className="bg-fuchsia-700 hover:bg-fuchsia-800 text-white px-6 py-3 rounded-full font-medium transition-all duration-150 shadow-lg hover:scale-105"
             >
-              <TranslatedText>Get in Touch</TranslatedText>
+              {t('hero.cta')}
             </a>
             <a 
               href="#projects" 
               className="bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-600 text-blue-800 dark:text-white border border-blue-100 dark:border-slate-600 px-6 py-3 rounded-full font-medium transition-all duration-150 shadow hover:scale-105"
             >
-              <TranslatedText>View Projects</TranslatedText>
+              {t('projects.title')}
             </a>
           </div>
         </div>

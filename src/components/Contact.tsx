@@ -10,7 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useSupabaseClient } from '@/hooks/useSupabase';
-import { TranslatedText } from './TranslatedText';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const socialLinks = [
   {
@@ -63,6 +63,7 @@ type FormData = z.infer<typeof formSchema>;
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const supabase = useSupabaseClient();
+  const { t } = useLanguage();
 
   // Initialize form with react-hook-form
   const form = useForm<FormData>({
@@ -90,7 +91,7 @@ const Contact = () => {
       if (error) throw error;
 
       toast({
-        title: "Your message has been sent!",
+        title: t('contact.success'),
         description: "I'll get back to you as soon as possible.",
       });
       
@@ -98,7 +99,7 @@ const Contact = () => {
     } catch (error) {
       console.error('Error submitting message:', error);
       toast({
-        title: "Failed to send message",
+        title: t('contact.error'),
         description: "Please try again later.",
         variant: "destructive",
       });
@@ -123,16 +124,16 @@ const Contact = () => {
       
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          <TranslatedText>Contact Me</TranslatedText>
+          {t('contact.title')}
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          <TranslatedText>Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.</TranslatedText>
+          {t('contact.subtitle')}
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
           <div className="group hover:-translate-y-1 transition-transform duration-300">
             <h3 className="text-2xl font-display font-bold mb-6 relative">
-              <TranslatedText>Get in Touch</TranslatedText>
+              {t('contact.title')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-32 transition-all duration-500"></span>
             </h3>
             
@@ -144,7 +145,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                        <TranslatedText>Your Name</TranslatedText>
+                        {t('contact.name')}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -164,7 +165,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                        <TranslatedText>Email Address</TranslatedText>
+                        {t('contact.email')}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -185,7 +186,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormLabel className="block text-sm font-medium text-foreground/80 mb-2 group-hover:text-foreground transition-colors">
-                        <TranslatedText>Message</TranslatedText>
+                        {t('contact.message')}
                       </FormLabel>
                       <FormControl>
                         <Textarea
@@ -214,12 +215,12 @@ const Contact = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      <TranslatedText>Sending...</TranslatedText>
+                      {t('contact.sending')}
                     </>
                   ) : (
                     <>
                       <Send className="h-4 w-4" />
-                      <TranslatedText>Send Message</TranslatedText>
+                      {t('contact.send')}
                     </>
                   )}
                 </button>
@@ -227,31 +228,31 @@ const Contact = () => {
             </Form>
             
             <div className="mt-8 bg-muted/50 p-6 rounded-lg border border-border">
-              <h4 className="font-medium mb-2"><TranslatedText>Quick Navigation</TranslatedText></h4>
+              <h4 className="font-medium mb-2">Quick Navigation</h4>
               <div className="flex flex-wrap gap-2">
                 <button 
                   onClick={() => scrollIntoView('home')}
                   className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
                 >
-                  <TranslatedText>Home</TranslatedText>
+                  {t('navbar.home')}
                 </button>
                 <button 
                   onClick={() => scrollIntoView('about')}
                   className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
                 >
-                  <TranslatedText>About</TranslatedText>
+                  {t('navbar.about')}
                 </button>
                 <button 
                   onClick={() => scrollIntoView('projects')}
                   className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
                 >
-                  <TranslatedText>Projects</TranslatedText>
+                  {t('navbar.projects')}
                 </button>
                 <button 
                   onClick={() => scrollIntoView('experience')}
                   className="px-3 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded-full transition-all"
                 >
-                  <TranslatedText>Experience</TranslatedText>
+                  {t('navbar.experience')}
                 </button>
               </div>
             </div>
@@ -259,12 +260,12 @@ const Contact = () => {
           
           <div className="group hover:-translate-y-1 transition-transform duration-300">
             <h3 className="text-2xl font-display font-bold mb-6 relative">
-              <TranslatedText>Connect With Me</TranslatedText>
+              Connect With Me
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-44 transition-all duration-500"></span>
             </h3>
             
             <p className="text-muted-foreground mb-8">
-              <TranslatedText>Feel free to reach out through any of the platforms below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</TranslatedText>
+              Feel free to reach out through any of the platforms below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
             
             <div className="flex flex-col space-y-4">
@@ -289,16 +290,16 @@ const Contact = () => {
             </div>
             
             <div className="mt-10 p-6 rounded-lg border border-border bg-secondary/30 transform hover:-translate-y-1 transition-transform duration-300 hover:shadow-md">
-              <h4 className="font-medium text-lg mb-2"><TranslatedText>Response Time</TranslatedText></h4>
+              <h4 className="font-medium text-lg mb-2">Response Time</h4>
               <p className="text-muted-foreground text-sm">
-                <TranslatedText>I typically respond to all messages within 24-48 hours. For urgent inquiries, email or phone is the best way to reach me.</TranslatedText>
+                I typically respond to all messages within 24-48 hours. For urgent inquiries, email or phone is the best way to reach me.
               </p>
             </div>
             
             <div className="mt-6 p-6 rounded-lg border border-border bg-secondary/30 transform hover:-translate-y-1 transition-transform duration-300 hover:shadow-md">
-              <h4 className="font-medium text-lg mb-2"><TranslatedText>Availability</TranslatedText></h4>
+              <h4 className="font-medium text-lg mb-2">Availability</h4>
               <p className="text-muted-foreground text-sm">
-                <TranslatedText>I'm currently open to freelance opportunities, full-time positions, and interesting collaborations. Let's discuss how we can work together!</TranslatedText>
+                I'm currently open to freelance opportunities, full-time positions, and interesting collaborations. Let's discuss how we can work together!
               </p>
             </div>
           </div>
