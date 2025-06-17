@@ -1,9 +1,9 @@
-
 import React from "react";
 import { BadgeInfo, Github, ExternalLink, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
+import { TechIcon } from "./TechIcon";
 
 type Project = {
   id: number;
@@ -43,12 +43,9 @@ export function ProjectCard({
           loading="lazy"
           draggable={false}
         />
-        {/* Image Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none transition group-hover:opacity-80" />
-        {/* Featured Star */}
         <div className="absolute top-4 right-4 z-10 rounded-full bg-white/70 dark:bg-black/20 shadow px-2 py-1 text-yellow-500 flex items-center gap-1 text-xs font-semibold">
           <Star className="h-4 w-4 fill-yellow-400" />
-          {/* Optionally mark "Featured" */}
           <span>Featured</span>
         </div>
       </div>
@@ -58,7 +55,10 @@ export function ProjectCard({
         <p className="text-slate-600 dark:text-slate-300 mb-2 line-clamp-2">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-3">
           {project.technologies.slice(0, 3).map((tech, idx) => (
-            <Badge key={idx} variant="secondary" className="text-xs">{tech}</Badge>
+            <Badge key={idx} variant="secondary" className="text-xs flex items-center gap-1">
+              <TechIcon tech={tech} className="w-3 h-3" />
+              {tech}
+            </Badge>
           ))}
           {project.technologies.length > 3 && (
             <Badge variant="outline" className="text-xs">
@@ -67,7 +67,6 @@ export function ProjectCard({
           )}
         </div>
 
-        {/* Actions */}
         <div className="flex gap-2 mt-auto">
           <button
             type="button"

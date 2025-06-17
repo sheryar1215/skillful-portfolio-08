@@ -1,8 +1,8 @@
-
 import React from "react";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CategoryTag } from "./CategoryTag";
+import { TechIcon } from "./TechIcon";
 
 type Project = {
   id: number;
@@ -53,7 +53,10 @@ export const AnimatedProjectCard: React.FC<Props> = ({ project, onDetails }) => 
       <p className="text-muted-foreground text-sm mb-3 line-clamp-2 flex-1">{project.description}</p>
       <div className="mt-auto flex flex-wrap gap-2">
         {project.technologies.slice(0, 3).map(tech =>
-          <span key={tech} className="bg-secondary text-secondary-foreground text-xs rounded px-2 py-0.5 font-medium">{tech}</span>
+          <span key={tech} className="bg-secondary text-secondary-foreground text-xs rounded px-2 py-0.5 font-medium flex items-center gap-1">
+            <TechIcon tech={tech} className="w-3 h-3" />
+            {tech}
+          </span>
         )}
       </div>
     </div>

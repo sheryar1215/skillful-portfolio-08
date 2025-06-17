@@ -1,9 +1,9 @@
-
 import React from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Github, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TranslatedText } from "./TranslatedText";
+import { TechIcon } from "./TechIcon";
 
 type Project = {
   id: number;
@@ -70,7 +70,8 @@ const ProjectModal = ({
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech, index) => (
-                <span key={index} className="bg-secondary text-secondary-foreground text-xs rounded px-2 py-0.5 font-medium">
+                <span key={index} className="bg-secondary text-secondary-foreground text-xs rounded px-2 py-0.5 font-medium flex items-center gap-1">
+                  <TechIcon tech={tech} className="w-3 h-3" />
                   {tech}
                 </span>
               ))}
