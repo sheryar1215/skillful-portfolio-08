@@ -18,7 +18,7 @@ const experiences = [
   },
   {
     "company": "Tech Emulsion",
-    "position": "Software Engineer Intern",
+    "position": "Full Stack Devaloper",
     "duration": "May 2025 - Currently Working",
     "description": "Working as a Software Engineer focusing on MERN stack technologies to build scalable and responsive web applications. Implementing SEO strategies for React applications and developing workflow automation with n8n and AI integration using Lovable AI.",
     "achievements": [
@@ -36,7 +36,7 @@ const experiences = [
       "• MERN Stack Optimization: Debugged and fixed critical backend issues in live MERN stack projects to enhance performance and reliability."
     
     ]
-}
+},
 
 {
     company: "E-stratcom",
