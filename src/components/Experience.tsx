@@ -19,7 +19,7 @@ const experiences = [
   {
     "company": "Tech Emulsion",
     "position": "Full Stack Devaloper",
-    "duration": "May 2025 - Currently Working",
+    "duration": "May 2025 - August 2025",
     "description": "Working as a Software Engineer focusing on MERN stack technologies to build scalable and responsive web applications. Implementing SEO strategies for React applications and developing workflow automation with n8n and AI integration using Lovable AI.",
     "achievements": [
       "🔁 AI & Workflow Automation Projects",
