@@ -27,14 +27,28 @@ const experiences = [
       "• AI Lead Generation System: Built a multi-step AI workflow using  n8n that automates lead search from LinkedIn, extracts professional and educational data, and sends personalized outreach emails via the LeadBot.",
       "• AI Inventory Sales Agent: Developed an intelligent inventory system in n8n that automatically manages stock data—adding, updating, and verifying inventory items.",
       "• Automated Email Sender: Created a seamless email automation workflow that personalizes and dispatches emails using lead/contact information, improving communication efficiency.",
-      "⚛️ React.js & Frontend Projects",
+      "• AI Automation Solutions: Resolved client issues using AI-driven workflows and automation tools for real-time problem-solving.", 
+      "⚛️ React.js & beckend Projects",
       "Contributed to React-based applications with intelligent feature integrations:",
-      "• CRS Chatbot Widget: Developed a customizable chatbot widget in React.js for Customer Relationship Software (CRS), enabling real-time support.",
+      "• CRS Chatbot Widget: Developed a customizable chatbot widget in React.js for Customer Relationship Software (CRS), enabling real-time support with backed.",
       "• CRS Template & Backend Support: Built a responsive and reusable React.js template and collaborated with backend teams for API integration.",
-      "• Gemini AI Chatbot: Integrated Gemini API with React + Vite to deliver a smart, contextual chatbot experience."
+      "• Gemini AI Chatbot: Integrated Gemini API with React + Vite to deliver a smart, contextual chatbot experience.",
+      "• MERN Stack Optimization: Debugged and fixed critical backend issues in live MERN stack projects to enhance performance and reliability."
+    
     ]
-  }
+}
+
+{
+    company: "E-stratcom",
+    position: "Full Stack Developer",
+    duration: "August 2024 - now",
+    description: "Worked as a full-stack developer focusing on MERN stack technologies and Parse Server.",
+    achievements: [
+      "Built scalable and responsive web applications using the Parse server",
+    ]
+  },
 ];
+
 
 const Experience = () => {
   const { t } = useLanguage();
