@@ -41,7 +41,7 @@ const experiences = [
 {
     company: "E-stratcom",
     position: "Full Stack Developer",
-    duration: "August 2024 - now",
+    duration: "August 2025 - now",
     description: "Worked as a full-stack developer focusing on MERN stack technologies and Parse Server.",
     achievements: [
       "Built scalable and responsive web applications using the Parse server",
