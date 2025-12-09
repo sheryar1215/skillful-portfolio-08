@@ -37,7 +37,7 @@ const About = () => {
               </p>
               
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Based in Peshawar, Pakistan, I work remotely with clients worldwide, delivering 
+                Based in Islamabad, Pakistan, I work remotely with clients worldwide, delivering 
                 high-quality solutions that drive business growth and user engagement.
               </p>
             </div>

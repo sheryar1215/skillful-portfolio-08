@@ -39,14 +39,20 @@ const experiences = [
 },
 
 {
-    company: "E-stratcom",
-    position: "Full Stack Developer",
-    duration: "August 2025 - now",
-    description: "Worked as a full-stack developer focusing on MERN stack technologies and Parse Server.",
-    achievements: [
-      "Built scalable and responsive web applications using the Parse server",
-    ]
-  },
+  company: "E-stratcom",
+  position: "Full Stack Developer",
+  duration: "August 2025 - Present",
+  description:
+    "Full-stack developer working across MERN Stack and Parse Server ecosystems, delivering reliable, scalable, and production-grade applications.",
+  achievements: [
+    "Designed and developed a full stack Parse Server–powered blogging platform, including user auth, role-based access, media uploads, and optimized cloud functions.",
+    "Worked on Nexkey microservices architecture, contributing to multiple modules across Android, web, and IoT-facing APIs with strong focus on scalability and clean architecture.",
+    "Integrated AWS services (EC2, S3, Lambda) and containerized deployments using Docker for efficient CI/CD and cross-environment consistency.",
+    "Collaborated with cross-functional frontend and backend teams to solve real-time production issues, improving system reliability and performance.",
+    "Implemented best practices in API design, database structuring, caching, and modular development to enhance overall code quality and maintainability."
+  ]
+}
+
 ];
 
 

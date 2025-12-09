@@ -104,10 +104,10 @@ const certifications = [
     image: "lovable-uploads/feea8dd3-d342-4d93-9a81-549f2171628c.png"
   },
   {
-    title: "AWS Certified Developer Associate",
-    issuer: "Amazon Web Services",
+    title: "full stack javascript Certified Developer Associate",
+    issuer: "Meta Course Era",
     date: "January 2024",
-    credentialId: "AWS-456789012"
+    credentialId: ""
   }
 ];
 
